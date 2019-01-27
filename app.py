@@ -27,6 +27,9 @@ def extract_domain(url:str):
     else:
         return result
 
+def insert_row(idx, df, df_insert):
+    return df.iloc[:idx, ].append(df_insert).append(df.iloc[idx:, ]).reset_index(drop = True)
+
 #test : http://localhost:5000/search/Arkema/rse.xlsx?format=xls
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
@@ -39,11 +42,12 @@ def searchforbrand(brand:str,referentiel:str):
 
     audience = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
                          index=1, sep=",")
-    rc=pd.DataFrame(columns=["index","audience","score"])
+    rc=pd.DataFrame(columns=["index","audience","score","urls"])
     for i in range(len(data)):
         row=data.iloc[i]
-        result=search(brand+" & "+row["query"],start=0,stop=20)
-        classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking"])
+        google_query=brand+" AND ("+row["query"]+")"
+        result=search(google_query,start=0,stop=20)
+        classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking","url"])
         j=0
         rank=0
         for r in result:
@@ -55,25 +59,33 @@ def searchforbrand(brand:str,referentiel:str):
                 except:
                     classement=1e6
 
-                classements.loc[j]=[classement,rank]
+                classements.loc[j]=[classement,rank,r]
                 j=j+1
 
 
+        idx=data.index.values[i]
         n_rows=float(len(classements))
         if n_rows>0:
-            rc.append([data.index.values[i],sum(classements["audience"]) / n_rows,sum((classements["audience"]/1e5)*classements["ranking"])/n_rows])
+            score=sum((classements["audience"]/1e5)*classements["ranking"])/n_rows
+            audience=sum(classements["audience"]) / n_rows
         else:
-            rc.append([data.index.values[i],1e10,1e10])
+            score=1e10
+            audience=1e10
+
+        rc=rc.append({"index":idx,"score":score,"audience":audience,"urls":",".join(classements["url"])},ignore_index=True)
+
+
+
 
 
     if "format" in request.args:
         if request.args["format"]=="xls":
             output = io.BytesIO()
-            writer = pd.ExcelWriter('output.xlsx', engine='xlsxwriter')
-            rc.to_excel(excel_writer=writer)
+            writer = pd.ExcelWriter(output, engine='xlsxwriter')
+            rc.to_excel(excel_writer=writer,sheet_name="output")
             return send_file(output,
                              mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                             attachment_filename="output.xlsx", as_attachment=True)
+                             attachment_filename=".\output.xlsx", as_attachment=True)
 
     return jsonify(rc)
 
