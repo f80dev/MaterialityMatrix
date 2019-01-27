@@ -1,10 +1,10 @@
-from flask import Flask,jsonify,Response
-from googlesearch import search,hits
+from flask import Flask,jsonify,Response,request,send_file
+from googlesearch import search
 import pandas as pd
+import io
 from urllib.parse import urlparse
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def hello_world():
@@ -27,7 +27,7 @@ def extract_domain(url:str):
     else:
         return result
 
-#test : http://localhost:5000/search/Michelin/rse.xlsx
+#test : http://localhost:5000/search/Arkema/rse.xlsx?format=xls
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
     if not referentiel.startswith("http"):
@@ -39,29 +39,41 @@ def searchforbrand(brand:str,referentiel:str):
 
     audience = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
                          index=1, sep=",")
-    rc=[]
+    rc=pd.DataFrame(columns=["index","audience","score"])
     for i in range(len(data)):
         row=data.iloc[i]
         result=search(brand+" & "+row["query"],start=0,stop=20)
         classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking"])
-        j=1
+        j=0
+        rank=0
         for r in result:
+            rank=rank+1
             domain=extract_domain(r)
-            try:
-                classement=audience.loc[domain][0]
-            except:
-                classement=1e6
+            if not domain in row["exclude"]:
+                try:
+                    classement=audience.loc[domain][0]
+                except:
+                    classement=1e6
 
-            classements.loc[j]=[classement,j]
-            j=j+1
+                classements.loc[j]=[classement,rank]
+                j=j+1
+
 
         n_rows=float(len(classements))
         if n_rows>0:
-            classement_moy={'index':data[0],'audience':sum(classements["audience"]) / n_rows,"score":sum((classements["audience"]/1e5)*classements["ranking"])/n_rows}
+            rc.append([data.index.values[i],sum(classements["audience"]) / n_rows,sum((classements["audience"]/1e5)*classements["ranking"])/n_rows])
         else:
-            classement_moy={'index':data[0],'audience':1e10,"score":1e10}
+            rc.append([data.index.values[i],1e10,1e10])
 
-        rc.append(classement_moy)
+
+    if "format" in request.args:
+        if request.args["format"]=="xls":
+            output = io.BytesIO()
+            writer = pd.ExcelWriter('output.xlsx', engine='xlsxwriter')
+            rc.to_excel(excel_writer=writer)
+            return send_file(output,
+                             mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                             attachment_filename="output.xlsx", as_attachment=True)
 
     return jsonify(rc)
 

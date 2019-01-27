@@ -1,3 +1,4 @@
 google
 pandas
 xlrd
+xlsxwriter
