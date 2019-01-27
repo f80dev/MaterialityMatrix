@@ -1,4 +1,4 @@
-from flask import Flask,jsonify
+from flask import Flask,jsonify,Response
 from googlesearch import search,hits
 import pandas as pd
 
@@ -14,8 +14,16 @@ def hello_world():
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
     if not referentiel.startswith("http"):
-    pd.read_excel()
-    result=hits(brand+" & ('innovation incrementale' | 'innovation participative')")
+        referentiel="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/"+referentiel
+
+    data:pd.DataFrame=None
+    if ".xls" in referentiel:data=pd.read_excel(referentiel)
+    if ".csv" in referentiel:data=pd.read_csv(referentiel)
+    if data is None:return Response("Bad format",401)
+
+    for r in data.iterrows():
+        result=hits(brand+" & "+r["google"])
+
     return jsonify(result)
 
 
