@@ -1,7 +1,7 @@
 from flask import Flask,jsonify,Response,request,send_file
 from googlesearch import search
 import pandas as pd
-import io
+import os
 from urllib.parse import urlparse
 
 app = Flask(__name__)
@@ -27,8 +27,13 @@ def extract_domain(url:str):
     else:
         return result
 
-def insert_row(idx, df, df_insert):
-    return df.iloc[:idx, ].append(df_insert).append(df.iloc[idx:, ]).reset_index(drop = True)
+
+
+def hash(df:pd.DataFrame):
+    rc=df.memory_usage(deep=True)
+    return str(sum(list(rc)))
+
+
 
 #test : http://localhost:5000/search/Arkema/rse.xlsx?format=xls
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
@@ -40,55 +45,86 @@ def searchforbrand(brand:str,referentiel:str):
     data=urltodata(referentiel)
     if data is None:return Response("Bad format",401)
 
-    audience = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
+    audiences = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
                          index=1, sep=",")
-    rc=pd.DataFrame(columns=["index","audience","score","urls"])
-    for i in range(len(data)):
-        row=data.iloc[i]
-        google_query=brand+" AND ("+row["query"]+")"
-        result=search(google_query,start=0,stop=20)
-        classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking","url"])
-        j=0
-        rank=0
-        for r in result:
-            rank=rank+1
-            domain=extract_domain(r)
-            if not domain in row["exclude"]:
-                try:
-                    classement=audience.loc[domain][0]
-                except:
-                    classement=1e6
+    rc=pd.DataFrame(columns=["index","audience","score","url1","url2","url3"])
 
-                classements.loc[j]=[classement,rank,r]
-                j=j+1
+    filename=hash(data)+"_"+brand+".pickle"
+    if filename in os.listdir("./saved"):
+        rc=pd.read_pickle("./saved/"+filename)
+    else:
+        size=20
+        for i in range(len(data)):
+            idx = data.index.values[i]
+            print("traitement de "+idx)
+            row=data.iloc[i]
+
+            google_query=brand+" AND ("+row["query"]+")"
+
+            result=search(google_query,start=0,stop=size,user_agent="MyUserAgent",pause=5)
+
+            classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking","url"])
+            j=0
+            rank=0
+            for r in result:
+                rank=rank+1
+                domain=extract_domain(r)
+                exclude_domain:str=row["exclude"]
+                if not domain in exclude_domain.lower().split(" "):
+                    try:
+                        classement=1e6-audiences.loc[domain][0]
+                    except:
+                        classement=1e6
+
+                    classements.loc[j]=[classement,rank,r]
+                    j=j+1
+                else:
+                    print(domain+" rejected")
 
 
-        idx=data.index.values[i]
-        n_rows=float(len(classements))
-        if n_rows>0:
-            score=sum((classements["audience"]/1e5)*classements["ranking"])/n_rows
-            audience=sum(classements["audience"]) / n_rows
-        else:
-            score=1e10
-            audience=1e10
+            n_rows=float(len(classements))
+            print(str(n_rows)+" rows")
+            if n_rows>0:
+                score=sum((classements["audience"]/1e6)*(size-classements["ranking"]))/n_rows
+                audience=sum(classements["audience"]) / n_rows
+                urls=list(classements["url"])
+            else:
+                score=1e10
+                audience=1e10
+                urls=["","",""]
 
-        rc=rc.append({"index":idx,"score":score,"audience":audience,"urls":",".join(classements["url"])},ignore_index=True)
+            if(len(urls)<3):
+                urls=urls.append(["","",""])
 
+            try:
+                rc=rc.append({"index":idx,"score":score,"audience":audience,"url1":urls[0],"url2":urls[1],"url3":urls[2]},ignore_index=True)
+            except:
+                pass
 
-
-
+        rc.to_pickle("./saved/"+filename)
 
     if "format" in request.args:
-        if request.args["format"]=="xls":
-            output = io.BytesIO()
-            writer = pd.ExcelWriter(output, engine='xlsxwriter')
+        if str(request.args["format"]).startswith("xls"):
+            try:
+                os.remove("./saved/output.xlsx")
+            except:
+                pass
+            writer = pd.ExcelWriter("./saved/output.xlsx",engine="xlsxwriter")
             rc.to_excel(excel_writer=writer,sheet_name="output")
-            return send_file(output,
+            writer.save()
+            return send_file("./saved/output.xlsx",
                              mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                             attachment_filename=".\output.xlsx", as_attachment=True)
+                             attachment_filename="output.xlsx", as_attachment=True)
+
+        if request.args["format"]=="csv":
+            os.remove("./saved/output.csv")
+            rc.to_csv("./saved/output.csv",sep=";",line_terminator="\n",index=False,decimal=".")
+            return send_file("./saved/output.csv",
+                             mimetype="text/csv",
+                             attachment_filename="output.csv", as_attachment=True)
 
     return jsonify(rc)
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000,debug=False)
