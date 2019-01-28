@@ -52,7 +52,7 @@ def hash(df:pd.DataFrame):
 
 
 
-#test : http://localhost:5000/search/Arkema/rse.xlsx?format=xls
+#test : http://localhost:5000/search/Microsoft/rse.xlsx?format=xls
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
     if not referentiel.startswith("http"):
