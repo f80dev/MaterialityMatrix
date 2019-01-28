@@ -57,8 +57,9 @@ def searchforbrand(brand:str,referentiel:str):
     audiences = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
                          index=1, sep=",")
 
-    domain_to_exclude=urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/domain_to_exclude.csv",
-                         index=1, sep=",")
+    domain_to_exclude=list(
+                            urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/domain_to_exclude.csv",sep=",").values
+                           )
 
     #fabrication du dataframe de reponse
     lst_cols=["index","audience","score"]
