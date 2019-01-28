@@ -42,18 +42,28 @@ def searchforbrand(brand:str,referentiel:str):
         referentiel="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/"+referentiel
 
 
+
     data=urltodata(referentiel)
     if data is None:return Response("Bad format",401)
 
     audiences = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
                          index=1, sep=",")
-    rc=pd.DataFrame(columns=["index","audience","score","url1","url2","url3"])
+
+
+    #fabrication du dataframe de reponse
+    lst_cols=["index","audience","score"]
+    size = 20
+    for i in range(size):
+        lst_cols=lst_cols+["col"+str(i)]
+    rc=pd.DataFrame(columns=lst_cols)
+
+
 
     filename=hash(data)+"_"+brand+".pickle"
     if filename in os.listdir("./saved"):
         rc=pd.read_pickle("./saved/"+filename)
     else:
-        size=20
+
         for i in range(len(data)):
             idx = data.index.values[i]
             print("traitement de "+idx)
@@ -61,7 +71,7 @@ def searchforbrand(brand:str,referentiel:str):
 
             google_query=brand+" AND ("+row["query"]+")"
 
-            result=search(google_query,start=0,stop=size,user_agent="MyUserAgent",pause=5)
+            result=search(google_query,start=0,stop=size,user_agent="MyUserAgent",pause=30)
 
             classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking","url"])
             j=0
@@ -91,15 +101,16 @@ def searchforbrand(brand:str,referentiel:str):
             else:
                 score=1e10
                 audience=1e10
-                urls=["","",""]
+                urls=[""]*size
 
-            if(len(urls)<3):
-                urls=urls.append(["","",""])
+            while len(urls)<10:
+                urls=urls+[""]
 
-            try:
-                rc=rc.append({"index":idx,"score":score,"audience":audience,"url1":urls[0],"url2":urls[1],"url3":urls[2]},ignore_index=True)
-            except:
-                pass
+            d_cols=dict({"index":idx,"score":score,"audience":audience})
+            for i in range(size):
+                d_cols["url"+str(i)]=urls[i]
+
+            rc=rc.append(d_cols,ignore_index=True)
 
         rc.to_pickle("./saved/"+filename)
 
