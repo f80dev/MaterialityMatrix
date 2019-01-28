@@ -25,7 +25,6 @@ def urltodata(url:str,index=0,sep=";"):
 def extract_domain(url:str):
     parsed_uri = urlparse(url)
     result = '{uri.netloc}'.format(uri=parsed_uri)
-    print(result)
     if len(result.split("."))>2:
         return result.split(".")[1]+"."+result.split(".")[2]
     else:
@@ -53,12 +52,13 @@ def hash(df:pd.DataFrame):
 
 
 #test : http://localhost:5000/search/Microsoft/rse.xlsx?format=xls
+#test2:http://localhost:5000/search/Servier/rse.xlsx?format=xls
+#test2:http://192.168.1.72:5010/search/Servier/rse.xlsx?format=xls
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
+    print("Lancement du traitement pour "+brand)
     if not referentiel.startswith("http"):
         referentiel="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/"+referentiel
-
-
 
     data=urltodata(referentiel)
     if data is None:return Response("Bad format",401)
@@ -77,7 +77,6 @@ def searchforbrand(brand:str,referentiel:str):
     rc=pd.DataFrame(columns=lst_cols)
 
 
-
     filename=hash(data)+"_"+brand+".pickle"
     if filename in os.listdir("./saved"):
         rc=pd.read_pickle("./saved/"+filename)
@@ -87,7 +86,7 @@ def searchforbrand(brand:str,referentiel:str):
             print("traitement de "+idx)
             row=data.iloc[i]
 
-            google_query=brand+" AND ("+row["query"]+")"
+            google_query="\""+brand+"\" AND ("+row["query"]+")"
 
             result=search(google_query,start=0,stop=size,user_agent="MyUserAgent2",pause=30)
 
@@ -95,6 +94,7 @@ def searchforbrand(brand:str,referentiel:str):
             j=0
             rank=0
             for r in result: #Ouverture de la page
+                print("traitment de "+r)
                 rank=rank+1
                 domain=extract_domain(r)
                 to_exclude:str=str(row["exclude"].lower()).replace("$brand",brand.lower())
