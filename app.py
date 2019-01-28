@@ -1,9 +1,10 @@
 from flask import Flask,jsonify,Response,request,send_file
+from bs4 import BeautifulSoup
 from googlesearch import search
 import pandas as pd
 import os
 from urllib.parse import urlparse
-from urllib.request import urlopen
+from urllib.request import urlopen,Request
 from textblob import TextBlob
 from textblob.sentiments import NaiveBayesAnalyzer
 
@@ -32,9 +33,17 @@ def extract_domain(url:str):
 
 
 def urlToString(url:str):
-    page = urlopen(url)
-    text = page.read().decode("utf8")
-    return text
+    try:
+        req=Request(url,headers={'User-Agent': 'Mozilla/5.0'})
+        page = urlopen(req)
+        soup= BeautifulSoup(page,"lxml")
+
+        for script in soup(["script", "style"]):
+            script.extract()
+
+        return soup.getText()
+    except:
+        return ""
 
 
 def hash(df:pd.DataFrame):
@@ -57,9 +66,8 @@ def searchforbrand(brand:str,referentiel:str):
     audiences = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
                          index=1, sep=",")
 
-    domain_to_exclude=list(
-                            urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/domain_to_exclude.csv",sep=",").values
-                           )
+    dt = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/domain_to_exclude.csv",sep=",")
+    domain_to_exclude=list(dt.index.values)
 
     #fabrication du dataframe de reponse
     lst_cols=["index","audience","score"]
@@ -83,27 +91,28 @@ def searchforbrand(brand:str,referentiel:str):
 
             result=search(google_query,start=0,stop=size,user_agent="MyUserAgent2",pause=30)
 
-            classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking","url"])
+            classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking","polarite","subjectivite","url"])
             j=0
             rank=0
             for r in result: #Ouverture de la page
                 rank=rank+1
                 domain=extract_domain(r)
-                exclude_domain:str=row["exclude"].lower().split(" ")+domain_to_exclude
+                to_exclude:str=str(row["exclude"].lower()).replace("$brand",brand.lower())
+                exclude_domain:str=to_exclude.split(" ")+domain_to_exclude
                 if not domain in exclude_domain:
                     text=urlToString(r)
                     if len(text)>0:
                         blob = TextBlob(text)
                         sentiment=blob.sentiment
                     else:
-                        sentiment={}
+                        sentiment=[0,0]
 
                     try:
                         classement=1e6-audiences.loc[domain][0]
                     except:
                         classement=1e6
 
-                    classements.loc[j]=[classement,rank,sentiment,r]
+                    classements.loc[j]=[classement,rank,sentiment[0],sentiment[1],r]
                     j=j+1
                 else:
                     print(domain+" rejected")
@@ -115,15 +124,19 @@ def searchforbrand(brand:str,referentiel:str):
                 score=20*(sum(classements["audience"]/1e6)/n_rows)
                 audience=sum(classements["audience"]) / n_rows
                 urls=list(classements["url"])
+                polarite=sum(classements["polarite"])/n_rows
+                subjectivite=sum(classements["subjectivite"])/n_rows
             else:
                 score=1e10
                 audience=1e10
                 urls=[""]*size
+                polarite=0
+                subjectivite=0
 
             while len(urls)<size:
                 urls=urls+[""]
 
-            d_cols=dict({"index":idx,"score":score,"audience":audience})
+            d_cols=dict({"index":idx,"score":score,"audience":audience,"polarite":polarite,"subjectivite":subjectivite})
             for i in range(size):
                 d_cols["url"+str(i)]=urls[i]
 
@@ -142,14 +155,14 @@ def searchforbrand(brand:str,referentiel:str):
             writer.save()
             return send_file("./saved/output.xlsx",
                              mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                             attachment_filename="output.xlsx", as_attachment=True)
+                             attachment_filename=brand+".xlsx", as_attachment=True)
 
         if request.args["format"]=="csv":
             os.remove("./saved/output.csv")
             rc.to_csv("./saved/output.csv",sep=";",line_terminator="\n",index=False,decimal=".")
             return send_file("./saved/output.csv",
                              mimetype="text/csv",
-                             attachment_filename="output.csv", as_attachment=True)
+                             attachment_filename=brand+".csv", as_attachment=True)
 
     return jsonify(rc)
 
