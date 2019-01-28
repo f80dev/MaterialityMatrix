@@ -3,12 +3,15 @@ from googlesearch import search
 import pandas as pd
 import os
 from urllib.parse import urlparse
+from urllib.request import urlopen
+from textblob import TextBlob
+from textblob.sentiments import NaiveBayesAnalyzer
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return 'Welcome on MaterialityMatrix'
 
 
 def urltodata(url:str,index=0,sep=";"):
@@ -27,6 +30,11 @@ def extract_domain(url:str):
     else:
         return result
 
+
+def urlToString(url:str):
+    page = urlopen(url)
+    text = page.read().decode("utf8")
+    return text
 
 
 def hash(df:pd.DataFrame):
@@ -49,12 +57,14 @@ def searchforbrand(brand:str,referentiel:str):
     audiences = urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/audience.csv",
                          index=1, sep=",")
 
+    domain_to_exclude=urltodata(url="https://raw.githubusercontent.com/f80dev/MaterialityMatrix/master/assets/domain_to_exclude.csv",
+                         index=1, sep=",")
 
     #fabrication du dataframe de reponse
     lst_cols=["index","audience","score"]
     size = 20
     for i in range(size):
-        lst_cols=lst_cols+["col"+str(i)]
+        lst_cols=lst_cols+["url"+str(i)]
     rc=pd.DataFrame(columns=lst_cols)
 
 
@@ -63,7 +73,6 @@ def searchforbrand(brand:str,referentiel:str):
     if filename in os.listdir("./saved"):
         rc=pd.read_pickle("./saved/"+filename)
     else:
-
         for i in range(len(data)):
             idx = data.index.values[i]
             print("traitement de "+idx)
@@ -71,31 +80,38 @@ def searchforbrand(brand:str,referentiel:str):
 
             google_query=brand+" AND ("+row["query"]+")"
 
-            result=search(google_query,start=0,stop=size,user_agent="MyUserAgent",pause=30)
+            result=search(google_query,start=0,stop=size,user_agent="MyUserAgent2",pause=30)
 
             classements:pd.DataFrame=pd.DataFrame(columns=["audience","ranking","url"])
             j=0
             rank=0
-            for r in result:
+            for r in result: #Ouverture de la page
                 rank=rank+1
                 domain=extract_domain(r)
-                exclude_domain:str=row["exclude"]
-                if not domain in exclude_domain.lower().split(" "):
+                exclude_domain:str=row["exclude"].lower().split(" ")+domain_to_exclude
+                if not domain in exclude_domain:
+                    text=urlToString(r)
+                    if len(text)>0:
+                        blob = TextBlob(text)
+                        sentiment=blob.sentiment
+                    else:
+                        sentiment={}
+
                     try:
                         classement=1e6-audiences.loc[domain][0]
                     except:
                         classement=1e6
 
-                    classements.loc[j]=[classement,rank,r]
+                    classements.loc[j]=[classement,rank,sentiment,r]
                     j=j+1
                 else:
                     print(domain+" rejected")
 
 
             n_rows=float(len(classements))
-            print(str(n_rows)+" rows")
+            print(str(n_rows)+" rows to treat")
             if n_rows>0:
-                score=sum((classements["audience"]/1e6)*(size-classements["ranking"]))/n_rows
+                score=20*(sum(classements["audience"]/1e6)/n_rows)
                 audience=sum(classements["audience"]) / n_rows
                 urls=list(classements["url"])
             else:
@@ -103,7 +119,7 @@ def searchforbrand(brand:str,referentiel:str):
                 audience=1e10
                 urls=[""]*size
 
-            while len(urls)<10:
+            while len(urls)<size:
                 urls=urls+[""]
 
             d_cols=dict({"index":idx,"score":score,"audience":audience})

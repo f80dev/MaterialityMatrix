@@ -3,3 +3,4 @@ google
 pandas
 xlrd
 xlsxwriter
+textblob
