@@ -50,7 +50,7 @@ def maxCaracteres(text:str):
     paragraphes=text.split("\n")
     max=0
     for p in paragraphes:
-        if len(p)>max:max=p
+        if len(p)>max:max=len(p)
     return max
 
 
@@ -119,6 +119,8 @@ def searchforbrand(brand:str,referentiel:str):
                             sentiment = [0, 0] #Initialisation du caractère positif/negatif et subjectif de la page
                             blob = TextBlob(text)
                             sentiment=blob.sentiment
+                        else:
+                            print(r + " rejected because of density filter")
 
                         try:
                             classement=1e6-audiences.loc[domain][0]
