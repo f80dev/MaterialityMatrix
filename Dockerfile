@@ -1,54 +1,35 @@
 #install docker
 #sudo curl -sSL get.docker.com | sh
 
-#x86
-FROM python:3
-#docker build -t f80hub/material_matrix_x86 . & docker push f80hub/material_matrix_x86:latest
 #pour les problemes de droit sur les répertoires : su -c "setenforce 0"
-#docker rm -f material_matrix && docker pull f80hub/material_matrix_x86:latest && docker run --restart=always -p 5000:5010 --name material_matrix -d f80hub/material_matrix_x86:latest
-
-#lancement en non sécurisé
-#su -c "setenforce 0" && docker rm -f clusterbench && docker pull f80hub/cluster_bench_x86:latest && docker run --restart=always -v /datas:/app/datas -v /clustering:/app/clustering -p 5000:5000 --name clusterbench -d f80hub/cluster_bench_x86:latest
 
 #arm
 #FROM arm64v8/python
 #FROM armhf/python
 #FROM resin/rpi-raspbian:stretch
+FROM hypriot/rpi-python
 
-# Install dependencies
-#RUN sudo apt-get update -y
-#RUN sudo apt-get dist-upgrade
-#RUN sudo apt-get install -y python3 python3-dev python3-pip python3-virtualenv --no-install-recommends && ln -s /usr/bin/python3 /usr/bin/python && rm -rf /var/lib/apt/lists/*
-
-#FROM hypriot/rpi-python
-#RUN apt-get update -y
-#RUN apt-get upgrade -y
-#RUN apt-get dist-upgrade -y
-#RUN apt-get install build-essential python-dev python-setuptools python-pip python-smbus -y
-#RUN apt-get install libncursesw5-dev libgdbm-dev libc6-dev -y
-#RUN apt-get install zlib1g-dev libsqlite3-dev tk-dev -y
-#RUN apt-get install libssl-dev openssl -y
-#RUN apt-get install libffi-dev -y
-#RUN apt-get install -y python3
-#RUN apt-get autoremove -y
-#RUN wget https://github.com/python/cpython/archive/v3.7.1.tar.gz
-#RUN tar -xvf v3.7.1.tar.gz
-#RUN cd v3.7.1 & ./configure --prefix=$HOME/.local --enable-optimizations && make && make altinstall
-
-#docker build -t f80hub/cluster_bench_arm . & docker push f80hub/cluster_bench_arm:latest
-#docker rm -f clusterbench && docker pull f80hub/cluster_bench_arm:latest
-#docker run --restart=always -p 5000:5000 --name clusterbench -d f80hub/cluster_bench_arm:latest
+#docker build -t f80hub/material_matrix_arm . & docker push f80hub/material_matrix_arm:latest
+#docker rm -f material_matrix && docker pull f80hub/material_matrix_arm:latest && docker run --restart=always -p 5000:5010 --name material_matrix -d f80hub/material_matrix_arm:latest
 
 
-#test:docker run -p 5000:5000 -t f80hub/cluster_bench_x86:latest
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get dist-upgrade -y
+
+RUN apt-get remove python2.7 --purge -y
 
 
+RUN apt-get install -y build-essential tk-dev libncurses5-dev libncursesw5-dev libreadline6-dev libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+RUN apt-get install -y libssl-dev openssl libffi-dev
 
-#test SocketServer : http://45.77.160.220:5000
+RUN wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
+RUN tar xf Python-3.7.2.tar.xz
+WORKDIR Python-3.7.2
+RUN ./configure
+RUN make
+RUN make altinstall
 
-#arm
-#docker build -t hhoareau/cluster_bench_arm .
-#docker push hhoareau/cluster_bench_arm:latest
 
 EXPOSE 5000
 
@@ -60,10 +41,20 @@ WORKDIR /app
 COPY requirements.txt /app/requirements.txt
 COPY assets /app/assets
 
-RUN pip3 install --upgrade pip
-RUN pip3 install setuptools
+RUN apt-get install -y python3-pip
 
-RUN pip3 install -r requirements.txt
+RUN pip install --upgrade pip
+RUN pip install setuptools
+RUN pip install textblob
+RUN pip install flask
+RUN pip install google
+RUN pip install pandas
+RUN pip install xlrd
+RUN pip install xlsxwriter
+RUN pip install beautifulsoup4
+RUN pip install requests
+
+RUN pip install -r requirements.txt
 
 COPY . /app
 

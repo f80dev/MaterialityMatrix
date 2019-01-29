@@ -5,7 +5,7 @@
 FROM python:3
 #docker build -t f80hub/material_matrix_x86 . & docker push f80hub/material_matrix_x86:latest
 #pour les problemes de droit sur les répertoires : su -c "setenforce 0"
-#docker rm -f material_matrix && docker pull f80hub/material_matrix_x86:latest && docker run --restart=always -p 5000:5010 --name material_matrix -d f80hub/material_matrix_x86:latest
+#docker rm -f material_matrix && docker pull f80hub/material_matrix_x86:latest && docker run --restart=always -p 5010:5000 --name material_matrix -d f80hub/material_matrix_x86:latest
 
 #lancement en non sécurisé
 #su -c "setenforce 0" && docker rm -f clusterbench && docker pull f80hub/cluster_bench_x86:latest && docker run --restart=always -v /datas:/app/datas -v /clustering:/app/clustering -p 5000:5000 --name clusterbench -d f80hub/cluster_bench_x86:latest

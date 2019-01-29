@@ -31,18 +31,28 @@ def extract_domain(url:str):
         return result
 
 
-def urlToString(url:str):
-    try:
-        req=Request(url,headers={'User-Agent': 'Mozilla/5.0'})
-        page = urlopen(req)
-        soup= BeautifulSoup(page,"lxml")
+def urlToHTML(url:str):
+    req=Request(url,headers={'User-Agent': 'Mozilla/5.0'})
+    page = urlopen(req)
+    return BeautifulSoup(page,"lxml")
 
+def urlToString(soup:BeautifulSoup):
+    try:
         for script in soup(["script", "style"]):
             script.extract()
 
         return soup.getText()
     except:
         return ""
+
+
+def maxCaracteres(text:str):
+    paragraphes=text.split("\n")
+    max=0
+    for p in paragraphes:
+        if len(p)>max:max=p
+    return max
+
 
 
 def hash(df:pd.DataFrame):
@@ -54,6 +64,7 @@ def hash(df:pd.DataFrame):
 #test : http://localhost:5000/search/Microsoft/rse.xlsx?format=xls
 #test2:http://localhost:5000/search/Servier/rse.xlsx?format=xls
 #test2:http://192.168.1.72:5010/search/Servier/rse.xlsx?format=xls
+#test2:http://ss.shifumix.com:5010/search/Altice/finances.xlsx?format=xls
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
     print("Lancement du traitement pour "+brand)
@@ -84,7 +95,7 @@ def searchforbrand(brand:str,referentiel:str):
         for i in range(len(data)):
             idx = data.index.values[i]
             print("traitement de "+idx)
-            row=data.iloc[i]
+            row=data.iloc[i] #Contient chaque ligne du fichier d'input
 
             google_query="\""+brand+"\" AND ("+row["query"]+")"
 
@@ -100,20 +111,22 @@ def searchforbrand(brand:str,referentiel:str):
                 to_exclude:str=str(row["exclude"].lower()).replace("$brand",brand.lower())
                 exclude_domain:str=to_exclude.split(" ")+domain_to_exclude
                 if not domain in exclude_domain:
-                    text=urlToString(r)
-                    if len(text)>0:
-                        blob = TextBlob(text)
-                        sentiment=blob.sentiment
-                    else:
-                        sentiment=[0,0]
+                    page=urlToHTML(r)
+                    text = urlToString(page)
+                    if len(text) > 0:
+                        mc = maxCaracteres(text)
+                        if mc>row["densite"]:
+                            sentiment = [0, 0] #Initialisation du caractère positif/negatif et subjectif de la page
+                            blob = TextBlob(text)
+                            sentiment=blob.sentiment
 
-                    try:
-                        classement=1e6-audiences.loc[domain][0]
-                    except:
-                        classement=1e6
+                        try:
+                            classement=1e6-audiences.loc[domain][0]
+                        except:
+                            classement=1e6
 
-                    classements.loc[j]=[classement,rank,sentiment[0],sentiment[1],r]
-                    j=j+1
+                        classements.loc[j]=[classement,rank,sentiment[0],sentiment[1],r]
+                        j=j+1
                 else:
                     print(domain+" rejected")
 
