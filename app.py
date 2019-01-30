@@ -32,11 +32,16 @@ def extract_domain(url:str):
 
 
 def urlToHTML(url:str):
-    req=Request(url,headers={'User-Agent': 'Mozilla/5.0'})
-    page = urlopen(req)
-    return BeautifulSoup(page,"lxml")
+    req=Request(url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'})
+    try:
+        page = urlopen(req)
+        return BeautifulSoup(page, "lxml")
+    except:
+        return None
+
 
 def urlToString(soup:BeautifulSoup):
+    if soup==None:return ""
     try:
         for script in soup(["script", "style"]):
             script.extract()
@@ -63,8 +68,9 @@ def hash(df:pd.DataFrame):
 
 #test : http://localhost:5000/search/Microsoft/rse.xlsx?format=xls
 #test2:http://localhost:5000/search/Servier/rse.xlsx?format=xls
-#test2:http://192.168.1.72:5010/search/Servier/rse.xlsx?format=xls
-#test2:http://ss.shifumix.com:5010/search/Altice/finances.xlsx?format=xls
+#test2:http://localhost:5000/search/Michelin/rse.xlsx?format=xls
+#test2:http://192.168.1.72:5000/search/Servier/rse.xlsx?format=xls
+#test2:http://ss.shifumix.com:5000/search/Altice/finances.xlsx?format=xls
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
     print("Lancement du traitement pour "+brand)
@@ -82,7 +88,7 @@ def searchforbrand(brand:str,referentiel:str):
 
     #fabrication du dataframe de reponse
     lst_cols=["index","audience","score"]
-    size = 20
+    size = 30
     for i in range(size):
         lst_cols=lst_cols+["url"+str(i)]
     rc=pd.DataFrame(columns=lst_cols)
@@ -120,7 +126,7 @@ def searchforbrand(brand:str,referentiel:str):
                             blob = TextBlob(text)
                             sentiment=blob.sentiment
                         else:
-                            print(r + " rejected because of density filter")
+                            print("=> rejected because of density filter")
 
                         try:
                             classement=1e6-audiences.loc[domain][0]
@@ -130,7 +136,7 @@ def searchforbrand(brand:str,referentiel:str):
                         classements.loc[j]=[classement,rank,sentiment[0],sentiment[1],r]
                         j=j+1
                 else:
-                    print(domain+" rejected")
+                    print("=> rejected because of forbidden domain")
 
 
             n_rows=float(len(classements))

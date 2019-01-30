@@ -33,7 +33,8 @@ FROM python:3
 #RUN apt-get autoremove -y
 #RUN wget https://github.com/python/cpython/archive/v3.7.1.tar.gz
 #RUN tar -xvf v3.7.1.tar.gz
-#RUN cd v3.7.1 & ./configure --prefix=$HOME/.local --enable-optimizations && make && make altinstall
+#WORKDIR v3.7.1
+#RUN ./configure --prefix=$HOME/.local --enable-optimizations && make && make altinstall
 
 #docker build -t f80hub/cluster_bench_arm . & docker push f80hub/cluster_bench_arm:latest
 #docker rm -f clusterbench && docker pull f80hub/cluster_bench_arm:latest
