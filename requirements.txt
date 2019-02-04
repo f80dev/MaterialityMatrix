@@ -6,3 +6,4 @@ xlsxwriter
 textblob
 beautifulsoup4
 requests
+pdfminer.six
