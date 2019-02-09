@@ -7,7 +7,7 @@ from urllib.parse import urlparse, urlencode, quote_plus
 from urllib.request import urlopen,Request
 from textblob import TextBlob, WordList
 
-from tools import log, urltodata, get_words, urlToString, urlToHTML
+from tools import log, urltodata, get_words, urlToString, urlToHTML, cache, hash_str
 from query import Query
 
 app = Flask(__name__)
@@ -30,6 +30,7 @@ def searchforbrand(brand:str,referentiel:str):
     format="json"
     if "format" in request.args:format=request.args["format"]
 
+
     size=3
     if "size" in request.args: size= int(request.args["size"])
 
@@ -51,8 +52,8 @@ def searchforbrand(brand:str,referentiel:str):
             return pd.read_pickle("./saved/"+filename)
 
 
-    #words=get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/Responsabilit%C3%A9_soci%C3%A9tale_des_entreprises")), 30)
-    words = get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/%C3%89vasion_fiscale")), 40)
+    words=get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/Responsabilit%C3%A9_soci%C3%A9tale_des_entreprises")), 30)
+    #words = get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/%C3%89vasion_fiscale")), 40)
     dt=pd.DataFrame(columns=["name","url"]+words)
     for i in range(len(data)):
         row=data.iloc[i] #Contient chaque ligne du fichier d'input
@@ -74,10 +75,10 @@ def searchforbrand(brand:str,referentiel:str):
     if "csv" in format:return q.to_csv()
     if "redirect" in format:
         url=urllib.parse.quote_plus(request.url.replace("format=redirect","format=json"))
-        return redirect(url+"https://jsoneditoronline.org/?url="+url)
+        return redirect("https://jsoneditoronline.org/?url="+url)
 
-    return jsonify(q.to_dict())
+    result=dict()
+    result["analyse"]=q.to_dict()
+    #result["projection"]=dt.to_dict()
 
-
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000,debug=False)
+    return jsonify(result)

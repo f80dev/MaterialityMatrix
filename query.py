@@ -27,7 +27,7 @@ class Query:
 
         self.google_query = "\"" + brand + "\" AND (" + search + ")"
         if not self.load_result(path):
-            self.result = googlesearch.search(self.google_query, start=0, stop=size, user_agent="MyUserAgent2", pause=30)
+            self.result = googlesearch.search(self.google_query, tbs="qdr:y", start=0, stop=size, user_agent="MyUserAgent2", pause=30)
 
 
     def load_result(self,path=""):
@@ -52,6 +52,7 @@ class Query:
             pass
         f=open(filename,"xt")
         for r in self.result:
+            log(r +" saved")
             f.write(r+"\n")
         f.close()
 
@@ -100,6 +101,7 @@ class Query:
             rc["documents"].append(d.to_dict())
         return rc
 
+
     def to_df(self):
         lst_cols = ["index", "audience", "score"]
         size = 30
@@ -110,8 +112,8 @@ class Query:
         # classements: pd.DataFrame = pd.DataFrame(columns=["audience", "ranking", "polarite", "subjectivite", "url"])
         # for d in self.documents:
         #     classements.append(d.to_df())
-
         return rc
+
 
     def to_excel(self):
         writer = pd.ExcelWriter("./saved/output.xlsx", engine="xlsxwriter")
@@ -120,6 +122,7 @@ class Query:
         return send_file("./saved/output.xlsx",
                          mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                          attachment_filename=self.brand + ".xlsx", as_attachment=True)
+
 
     def to_csv(self):
         os.remove("./saved/output.csv")

@@ -1,7 +1,8 @@
 import pandas as pd
+from idna import unicode
 from textblob import TextBlob, WordList
 
-from tools import urlToHTML, urlToString, maxCaracteres, log, get_words
+from tools import urlToHTML, urlToString, maxCaracteres, log, get_words, hash_str, remove_file, cache
 
 
 class Document:
@@ -30,6 +31,7 @@ class Document:
             text = self.page
         else:
             text = urlToString(self.page)
+
 
         if len(text) > 0:
             mc = maxCaracteres(text)
@@ -72,3 +74,20 @@ class Document:
         rc: pd.DataFrame = pd.DataFrame(columns=["audience", "score", "polarite", "subjectivite", "words"])
         rc.append([self.audience,self.score,self.polarite, self.subjectivite, self.words])
         return rc
+
+    def saveDocument(self):
+        filename="./temp/"+hash_str(self.url)+".html"
+        remove_file(filename)
+        with open(filename,"w") as f:
+            f.write(unicode(self.page))
+        f.close()
+
+    def loadDocument(self):
+        filename = "./temp/" + hash_str(self.url) + ".html"
+        try:
+            with open(filename, "rb") as f:
+                self.page=f.read()
+            f.close()
+            return True
+        except:
+            return False

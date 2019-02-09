@@ -1,5 +1,8 @@
 import hashlib
 import math
+import os
+import pickle
+
 from nltk.corpus import stopwords
 from io import StringIO
 from urllib.parse import urlparse
@@ -41,6 +44,13 @@ def maxCaracteres(text:str):
 def hash_str(s:str):
     return hashlib.md5(s.encode('utf-8')).hexdigest()
 
+def remove_file(path):
+    try:
+        os.remove(path)
+        return True
+    except:
+        return False
+
 
 def hash(df:pd.DataFrame):
     rc=df.memory_usage(deep=True)
@@ -63,6 +73,10 @@ def idf(word, bloblist):
 def tfidf(word, blob, bloblist):
     return tf(word, blob) * idf(word, bloblist)
 
+def stop_words():
+    wrd_to_remove = stopwords.words(["french", "english"])
+    for w in ["les", "d'une", "cette", "comme", "aussi", "plus", "moins"]: wrd_to_remove.append(w)
+    return wrd_to_remove
 
 def get_words(text:str,n_words:int=20):
     mc = maxCaracteres(text)
@@ -70,9 +84,8 @@ def get_words(text:str,n_words:int=20):
         blob = TextBlob(text)
         wrds=blob.word_counts
         wrds_sorted= sorted(wrds.items(), key=lambda kv: kv[1],reverse=True)
-        wrd_to_remove=stopwords.words(["french","english"])
-        for w in ["les","d'une","cette","comme","plus","moins"]:wrd_to_remove.append(w)
-        n_wrds_sorted= [w for w in wrds_sorted if not w[0] in wrd_to_remove and len(w[0])>2]
+
+        n_wrds_sorted= [w for w in wrds_sorted if not w[0] in stop_words() and len(w[0])>2]
         rc=[]
         for w in n_wrds_sorted[0:min(n_words,len(n_wrds_sorted))]:
             rc.append(w[0])
@@ -82,11 +95,11 @@ def get_words(text:str,n_words:int=20):
 
 
 
-def urlToHTML(url:str):
+def urlToHTML(url:str,req=None):
     if url is None or len(url)==0:return None
 
-    req=Request(url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'})
     try:
+        req=Request(url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'})
         page = urlopen(req)
         if "pdf" in page.headers["Content-Type"]:
             return convert_pdf_to_txt(url)
@@ -94,6 +107,20 @@ def urlToHTML(url:str):
             return BeautifulSoup(page, "lxml")
     except:
         return None
+
+
+def cache(body=None,name=None):
+    filename = "./temp/" + name
+    if body is None:
+        try:
+            with open(filename+".pkl", "rb") as f:
+                return pickle.load(f)
+        except:
+            return None
+    else:
+        remove_file(filename)
+        with open(filename, "w") as f:
+            pickle.dump(body,f,protocol=pickle.DEFAULT_PROTOCOL)
 
 
 def urlToString(soup:BeautifulSoup):
