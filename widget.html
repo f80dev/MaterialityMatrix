@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function getParam() {
+        var vars = {};
+        window.location.href.replace( location.hash, '' ).replace(
+            /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+            function( m, key, value ) { vars[key] = value !== undefined ? value : '';}
+        );
+        return vars;
+    }
+</script>
+<body style="margin:0;padding:0;overflow: hidden;">
+<input value="email" id="txtEmail" type="email">
+
+</body>
+</html>
