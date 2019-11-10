@@ -1,0 +1,206 @@
+{
+  "analyse": {
+    "audience": 13333333333.333334,
+    "documents": [
+      {
+        "audience": 10000000000.0,
+        "lang": "fr",
+        "polarite": 0.6,
+        "score": 10000000000.0,
+        "subjectivite": 0.16875,
+        "title": "Interprofession : Le Gnis r\u00e9fl\u00e9chit \u00e0 s\u2019ouvrir aux d\u00e9fenseurs des semences de ferme",
+        "url": "http://www.lafranceagricole.fr/actualites/cultures/interprofession-le-gnis-reflechit-asouvrir-aux-defenseurs-des-semences-de-ferme-1,5,4248325219.html"
+      },
+      {
+        "audience": 10000000000.0,
+        "lang": "en",
+        "polarite": 0.2827352607709753,
+        "score": 10000000000.0,
+        "subjectivite": 0.07295493197278898,
+        "title": "Semences. Le GNIS veut \u00e9largir l'offre vari\u00e9tale",
+        "url": "https://www.slideshare.net/GuyonJacky/semences-le-gnis-veut-largir-loffre-varitale"
+      },
+      {
+        "audience": 10000000000.0,
+        "lang": "fr",
+        "polarite": 0.6779761904761904,
+        "score": 10000000000.0,
+        "subjectivite": 0.11432291666666665,
+        "title": "GNIS : Tribune Libre accord\u00e9e Catherine DAGORN, Directrice G\u00e9n\u00e9rale du Groupement National Interprofessionnel des Semences et plants, apr\u00e8s la diffusion de l\u2019\u00e9mission Cash Investigation du 18 juin 2019",
+        "url": "https://www.secteurvert.com/component/k2/item/3495-gnis-tribune-libre-accordee-catherine-dagorn-directrice-generale-du-groupement-national-interprofessionnel-des-semences-et-plants-apres-la-diffusion-de-l-emission-cash-investigation-du-18-juin-2019.html"
+      }
+    ],
+    "name": "Gouvernance",
+    "polarite": 0.5202371504157219,
+    "query": "\"GNIS\" AND (\"gouvernance\" OR ~gouvernance OR \"governance\" OR \"transparence\" OR ~transparence OR \"transparency\" OR \"alerte\" OR \"alert\" OR \"prise de d\u00e9cision\" OR \"decision making\" OR \"management\" OR \"d\u00e9cisionnel\" OR \"decision-making procedure\" OR \"agilit\u00e9\" OR \"agiltity\" OR \"agile\" OR \"amende\" OR \"fine\" OR \"penalty\")",
+    "score": 10000000000.0,
+    "subjectivite": 0.11867594954648521
+  },
+  "projection": {
+    "2006": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "article": {
+      "0": 2,
+      "1": 0,
+      "2": 1
+    },
+    "aspects": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "code": {
+      "0": 0,
+      "1": 0,
+      "2": 1
+    },
+    "communication": {
+      "0": 0,
+      "1": 5,
+      "2": 0
+    },
+    "droit": {
+      "0": 2,
+      "1": 7,
+      "2": 0
+    },
+    "durable": {
+      "0": 0,
+      "1": 2,
+      "2": 1
+    },
+    "d\u00e9veloppement": {
+      "0": 0,
+      "1": 21,
+      "2": 1
+    },
+    "entreprise": {
+      "0": 0,
+      "1": 1,
+      "2": 0
+    },
+    "entreprises": {
+      "0": 0,
+      "1": 31,
+      "2": 1
+    },
+    "iso": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "l'entreprise": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "leurs": {
+      "0": 0,
+      "1": 14,
+      "2": 0
+    },
+    "loi": {
+      "0": 0,
+      "1": 2,
+      "2": 1
+    },
+    "mise": {
+      "0": 3,
+      "1": 19,
+      "2": 0
+    },
+    "modifier": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "name": {
+      "0": "Interprofession : Le Gnis r\u00e9fl\u00e9chit \u00e0 s\u2019ouvrir aux d\u00e9fenseurs des semences de ferme",
+      "1": "Semences. Le GNIS veut \u00e9largir l'offre vari\u00e9tale",
+      "2": "GNIS : Tribune Libre accord\u00e9e Catherine DAGORN, Directrice G\u00e9n\u00e9rale du Groupement National Interprofessionnel des Semences et plants, apr\u00e8s la diffusion de l\u2019\u00e9mission Cash Investigation du 18 juin 2019"
+    },
+    "normes": {
+      "0": 0,
+      "1": 1,
+      "2": 0
+    },
+    "obligation": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "parties": {
+      "0": 0,
+      "1": 5,
+      "2": 0
+    },
+    "prenantes": {
+      "0": 0,
+      "1": 5,
+      "2": 0
+    },
+    "query": {
+      "0": "Gouvernance",
+      "1": "Gouvernance",
+      "2": "Gouvernance"
+    },
+    "rapport": {
+      "0": 0,
+      "1": 2,
+      "2": 0
+    },
+    "responsabilit\u00e9": {
+      "0": 0,
+      "1": 8,
+      "2": 1
+    },
+    "rse": {
+      "0": 0,
+      "1": 2,
+      "2": 0
+    },
+    "salari\u00e9s": {
+      "0": 0,
+      "1": 2,
+      "2": 0
+    },
+    "social": {
+      "0": 0,
+      "1": 1,
+      "2": 0
+    },
+    "sociale": {
+      "0": 0,
+      "1": 7,
+      "2": 0
+    },
+    "soci\u00e9tale": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "soci\u00e9t\u00e9s": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "url": {
+      "0": "http://www.lafranceagricole.fr/actualites/cultures/interprofession-le-gnis-reflechit-asouvrir-aux-defenseurs-des-semences-de-ferme-1,5,4248325219.html",
+      "1": "https://www.slideshare.net/GuyonJacky/semences-le-gnis-veut-largir-loffre-varitale",
+      "2": "https://www.secteurvert.com/component/k2/item/3495-gnis-tribune-libre-accordee-catherine-dagorn-directrice-generale-du-groupement-national-interprofessionnel-des-semences-et-plants-apres-la-diffusion-de-l-emission-cash-investigation-du-18-juin-2019.html"
+    },
+    "voir": {
+      "0": 0,
+      "1": 1,
+      "2": 0
+    },
+    "\u0153uvre": {
+      "0": 2,
+      "1": 14,
+      "2": 0
+    }
+  }
+}

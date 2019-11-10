@@ -86,8 +86,8 @@ def searchforbrand(brand:str,referentiel:str):
     result["analyse"]=q.to_dict()
     result["projection"]=dt.to_dict()
 
-    writer = pd.ExcelWriter("./saved/output.xlsx", engine="xlsxwriter")
-    dt.to_excel(excel_writer=writer, sheet_name="output")
-    writer.save()
+    # writer = pd.ExcelWriter("./saved/dt.xlsx", engine="xlsxwriter")
+    # dt.to_excel(excel_writer=writer, sheet_name="output")
+    # writer.save()
 
     return jsonify(result)
