@@ -4,10 +4,13 @@ import googlesearch
 import os
 from app import log
 from document import Document
-from tools import extract_domain, hash_str, get_words, urlToString, urlToHTML
+from tools import extract_domain, hash_str, get_words, urlToString, urlToHTML, extract_emails
 
 
 class Query:
+    """
+
+    """
     name:str=""
     search:str=""
     brand:str=""
@@ -31,6 +34,11 @@ class Query:
 
 
     def load_result(self,path=""):
+        """
+
+        :param path:
+        :return:
+        """
         if path is None:return False
         self.result=[]
         filename=path + "/" + hash_str(self.google_query)
@@ -50,7 +58,7 @@ class Query:
             os.remove(filename)
         except:
             pass
-        f=open(filename,"xt")
+        f=open(filename,mode="w")
         for r in self.result:
             log(r +" saved")
             f.write(r+"\n")
@@ -59,7 +67,13 @@ class Query:
 
     def execute(self,domain_to_exclude:str="",densite:int=250):
         log("traitement de " + self.search)
-        for r in self.result:  # Ouverture de la page
+        lr=list()
+        try:
+            lr=self.result
+        except:
+            pass
+
+        for r in lr:  # Ouverture de la page
             if len(r)>0:
                 log("traitment de " + r)
                 domain = extract_domain(r)
@@ -69,6 +83,7 @@ class Query:
                 if not domain in exclude_domain:
                     d = Document(r)
                     d.analyse(densite=densite)
+                    d.extract_email()
                     self.documents.append(d)
                 else:
                     log("=> rejected because of forbidden domain")
@@ -140,4 +155,5 @@ class Query:
                 rc.append([self.name,d.title,d.url]+r)
 
         return rc
+
 

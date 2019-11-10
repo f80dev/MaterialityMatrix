@@ -1,3 +1,4 @@
+import re
 import hashlib
 import math
 import os
@@ -32,6 +33,10 @@ def extract_domain(url:str):
     else:
         return result
 
+def extract_emails(text:str):
+    if text is None:return list()
+    match = re.findall(r'[\w\.-]+@[\w\.-]+', text)
+    return match
 
 def maxCaracteres(text:str):
     paragraphes=text.split("\n")

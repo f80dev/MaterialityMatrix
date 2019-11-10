@@ -2,7 +2,7 @@ import pandas as pd
 from idna import unicode
 from textblob import TextBlob, WordList
 
-from tools import urlToHTML, urlToString, maxCaracteres, log, get_words, hash_str, remove_file, cache
+from tools import urlToHTML, urlToString, maxCaracteres, log, get_words, hash_str, remove_file, cache, extract_emails
 
 
 class Document:
@@ -12,6 +12,7 @@ class Document:
     polarite:int = 0
     subjectivite:int= 0
     words=[]
+    emails=list()
     page=None
     lang=""
     blob=None
@@ -25,6 +26,12 @@ class Document:
                 self.title=self.page.title.string
             except:
                 pass
+
+    def extract_email(self):
+        html=urlToHTML(self.page)
+        self.emails=extract_emails(html)
+        print("Mail récupérés = "+str(self.emails))
+
 
     def analyse(self,densite):
         if type(self.page) == str:

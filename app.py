@@ -47,7 +47,7 @@ def searchforbrand(brand:str,referentiel:str):
     domain_to_exclude=list(dt.index.values)
 
     if "xls" in format:
-        filename=hash(data)+"_"+brand+".pickle"
+        filename=str(hash(str(data)))+"_"+brand+".pickle"
         if filename in os.listdir("./saved"):
             return pd.read_pickle("./saved/"+filename)
 
@@ -66,10 +66,14 @@ def searchforbrand(brand:str,referentiel:str):
             size=size,path="./temp")
 
         q.save_result("./temp")
-        q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
-        q.init_metrics(size)
-        rows=pd.DataFrame(q.project(words = words),columns=["query","name","url"]+words)
-        dt=dt.append(rows)
+        try:
+            q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
+            q.init_metrics(size)
+            rows = pd.DataFrame(q.project(words=words), columns=["query", "name", "url"] + words)
+            dt = dt.append(rows)
+        except:
+            print("Erreur de traitement pour "+q.name)
+            pass
 
     if "xls" in format:return q.to_excel()
     if "csv" in format:return q.to_csv()
@@ -79,6 +83,6 @@ def searchforbrand(brand:str,referentiel:str):
 
     result=dict()
     result["analyse"]=q.to_dict()
-    #result["projection"]=dt.to_dict()
+    result["projection"]=dt.to_dict()
 
     return jsonify(result)
