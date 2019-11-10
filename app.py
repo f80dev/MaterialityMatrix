@@ -58,31 +58,36 @@ def searchforbrand(brand:str,referentiel:str):
     for i in range(len(data)):
         row=data.iloc[i] #Contient chaque ligne du fichier d'input
 
-        q=Query(
-            name=data.index.values[i],
-            search=row["query"],
-            brand=brand,
-            exclude=row["exclude"],
-            size=size,path="./temp")
+        if row["Execute"]:
+            q=Query(
+                name=data.index.values[i],
+                search=row["query"],
+                brand=brand,
+                exclude=row["exclude"],
+                size=size,path="./temp")
 
-        q.save_result("./temp")
-        try:
-            q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
-            q.init_metrics(size)
-            rows = pd.DataFrame(q.project(words=words), columns=["query", "name", "url"] + words)
-            dt = dt.append(rows)
-        except:
-            print("Erreur de traitement pour "+q.name)
-            pass
+            q.save_result("./temp")
+            try:
+                q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
+                q.init_metrics(size)
+                rows = pd.DataFrame(q.project(words=words), columns=["query", "name", "url"] + words)
+                dt = dt.append(rows)
+            except:
+                print("Erreur de traitement pour "+q.name)
+                pass
 
-    if "xls" in format:return q.to_excel()
-    if "csv" in format:return q.to_csv()
-    if "redirect" in format:
-        url=urllib.parse.quote_plus(request.url.replace("format=redirect","format=json"))
-        return redirect("https://jsoneditoronline.org/?url="+url)
+    #if "xls" in format:return q.to_excel()
+    # if "csv" in format:return q.to_csv()
+    # if "redirect" in format:
+    #     url=urllib.parse.quote_plus(request.url.replace("format=redirect","format=json"))
+    #     return redirect("https://jsoneditoronline.org/?url="+url)
 
     result=dict()
     result["analyse"]=q.to_dict()
     result["projection"]=dt.to_dict()
+
+    writer = pd.ExcelWriter("./saved/output.xlsx", engine="xlsxwriter")
+    dt.to_excel(excel_writer=writer, sheet_name="output")
+    writer.save()
 
     return jsonify(result)
