@@ -1,24 +1,18 @@
-import urllib
-
-from flask import Flask,jsonify,Response,request,redirect
+import ssl
+import sys
+from flask import Flask, Response, request, json
 import pandas as pd
 import os
-from urllib.parse import urlparse, urlencode, quote_plus
-from urllib.request import urlopen,Request
-from textblob import TextBlob, WordList
-
-from tools import log, urltodata, get_words, urlToString, urlToHTML, cache, hash_str
-from query import Query
+from flask_cors import CORS
+from tools import log, urltodata, get_words, urlToString, urlToHTML
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
+def help():
     return 'Welcome on MaterialityMatrix'
 
-
-#test : http://localhost:5000/search/Microsoft/rse.xlsx?format=xls
-#test2:http://localhost:5000/search/Servier/rse.xlsx?format=xls
+#http://localhost:6000/search/GNIS/rse.xlsx
 #test2:http://localhost:5000/search/Michelin/rse.xlsx?format=xls
 #http://localhost:5000/search/Renault/ef.xlsx?format=json
 #test2:http://192.168.1.72:5000/search/Servier/rse.xlsx?format=xls
@@ -55,10 +49,15 @@ def searchforbrand(brand:str,referentiel:str):
     words=get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/Responsabilit%C3%A9_soci%C3%A9tale_des_entreprises")), 30)
     #words = get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/%C3%89vasion_fiscale")), 40)
     dt=pd.DataFrame(columns=["name","url"]+words)
+
+    result = dict()
+    result["analyses"]=list()
+
     for i in range(len(data)):
         row=data.iloc[i] #Contient chaque ligne du fichier d'input
 
         if row["Execute"]:
+            from query import Query
             q=Query(
                 name=data.index.values[i],
                 search=row["query"],
@@ -70,24 +69,44 @@ def searchforbrand(brand:str,referentiel:str):
             try:
                 q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
                 q.init_metrics(size)
+                result["analyses"].append(q.to_dict())
                 rows = pd.DataFrame(q.project(words=words), columns=["query", "name", "url"] + words)
                 dt = dt.append(rows)
             except:
                 print("Erreur de traitement pour "+q.name)
                 pass
 
-    #if "xls" in format:return q.to_excel()
+    #if "xls" in format: return q.to_excel()
     # if "csv" in format:return q.to_csv()
     # if "redirect" in format:
     #     url=urllib.parse.quote_plus(request.url.replace("format=redirect","format=json"))
     #     return redirect("https://jsoneditoronline.org/?url="+url)
 
-    result=dict()
-    result["analyse"]=q.to_dict()
+
     result["projection"]=dt.to_dict()
 
-    # writer = pd.ExcelWriter("./saved/dt.xlsx", engine="xlsxwriter")
-    # dt.to_excel(excel_writer=writer, sheet_name="output")
+    # writer = pd.ExcelWriter("./saved/analyse.xlsx", engine="xlsxwriter")
+    # result["analyses"].to_df().to_excel(excel_writer=writer, sheet_name="output")
     # writer.save()
 
-    return jsonify(result)
+    return app.response_class(response=json.dumps(result),status=200,mimetype="application/json")
+
+if __name__ == '__main__':
+    CORS(app)
+    _port = sys.argv[1]
+    if "debug" in sys.argv:
+        app.run(host="0.0.0.0", port=_port, debug=True)
+    else:
+        if "ssl" in sys.argv:
+            # Le context de sécurisation est chargé avec les certificats produit par "Let's Encrypt"
+            context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+            context.load_cert_chain("/app/certs/fullchain.pem", "/app/certs/privkey.pem")
+            app.run(host="0.0.0.0", port=_port, debug=False, ssl_context=context)
+
+        else:
+            # Le serveur peut être déployé en mode non sécurisé
+            # cela dit la plus part des front-end ne peuvent être hébergés quand mode https
+            # ils ne peuvent donc appeler que des serveurs en https. Il est donc préférable
+            # de déployer l'API sur un serveur sécurisé
+            app.run(host="0.0.0.0", port=_port, debug=False)
+

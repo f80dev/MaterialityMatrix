@@ -1,5 +1,4 @@
 flask
-google
 pandas
 xlrd
 xlsxwriter
@@ -7,3 +6,5 @@ textblob
 beautifulsoup4
 requests
 pdfminer.six
+flask-cors
+google-search

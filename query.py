@@ -1,16 +1,12 @@
 import pandas as pd
 from flask import send_file
-import googlesearch
 import os
+import googlesearch
 from app import log
 from document import Document
-from tools import extract_domain, hash_str, get_words, urlToString, urlToHTML, extract_emails
-
+from tools import extract_domain, hash_str
 
 class Query:
-    """
-
-    """
     name:str=""
     search:str=""
     brand:str=""

@@ -1,9 +1,8 @@
 import pandas as pd
 from idna import unicode
-from textblob import TextBlob, WordList
+from textblob import TextBlob
 
-from tools import urlToHTML, urlToString, maxCaracteres, log, get_words, hash_str, remove_file, cache, extract_emails
-
+from tools import urlToHTML, urlToString, maxCaracteres, log, get_words, hash_str, remove_file, extract_emails
 
 class Document:
     url:str=""
@@ -44,10 +43,13 @@ class Document:
             mc = maxCaracteres(text)
             if mc > densite:
                 self.blob = TextBlob(text)
+                print("Analyse du sentiment -> ",end="")
                 sentiment=self.blob.sentiment
                 self.polarite = sentiment[1]
                 self.subjectivite=sentiment[0]
+                print("Mots clés -> ", end="")
                 self.words = get_words(text,200)
+                print("langue -> ", end="")
                 self.lang=self.blob.detect_language()
             else:
                 log("=> rejected because of density filter")

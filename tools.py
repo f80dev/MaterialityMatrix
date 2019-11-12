@@ -1,19 +1,18 @@
+import io
 import re
 import hashlib
 import math
 import os
 import pickle
+import urllib
+from urllib import request
 
+import PyPDF2 as PyPDF2
 from nltk.corpus import stopwords
-from io import StringIO
 from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 
 from bs4 import BeautifulSoup
-from pdfminer.converter import TextConverter
-from pdfminer.layout import LAParams
-from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
-from pdfminer.pdfpage import PDFPage
 import pandas as pd
 from textblob import TextBlob
 
@@ -107,10 +106,12 @@ def urlToHTML(url:str,req=None):
         req=Request(url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'})
         page = urlopen(req)
         if "pdf" in page.headers["Content-Type"]:
-            return convert_pdf_to_txt(url)
+            s=convert_pdf_to_txt(url)
+            return s
         else:
             return BeautifulSoup(page, "lxml")
     except:
+        print("Erreur de transcription pour "+url)
         return None
 
 
@@ -139,32 +140,16 @@ def urlToString(soup:BeautifulSoup):
         return ""
 
 
-def convert_pdf_to_txt(path):
-    rsrcmgr = PDFResourceManager()
-    retstr = StringIO()
-    codec = 'utf-8'
-    laparams = LAParams()
-    device = TextConverter(rsrcmgr, retstr, codec=codec, laparams=laparams)
+def convert_pdf_to_txt(url,password=''):
+    html= urllib.request.urlopen(url).read()
+    with io.BytesIO(html) as open_pdf_file:
+        read_pdf = PyPDF2.PdfFileReader(open_pdf_file)
+        if password != '':
+            read_pdf.decrypt(password)
+        text = []
+        print("Lecture pdf : ",end='')
+        for i in range(0, read_pdf.getNumPages()):
+            print(str(i),end = '')
+            text.append(read_pdf.getPage(i).extractText())
+    return ('\n'.join(text).replace("\n", ''))
 
-    data = urlopen(path).read()
-    f = open('output.pdf', 'wb')
-    f.write(data)
-    f.close()
-    f = open("output.pdf","rb")
-
-    interpreter = PDFPageInterpreter(rsrcmgr, device)
-    password = ""
-    maxpages = 0
-    caching = True
-    pagenos=set()
-
-    for page in PDFPage.get_pages(f, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
-        interpreter.process_page(page)
-
-    text = retstr.getvalue()
-
-    f.close()
-
-    device.close()
-    retstr.close()
-    return text
