@@ -1,9 +1,10 @@
 #install docker
 #sudo curl -sSL get.docker.com | sh
 
+#Construction et installation de l'image
 #docker build -t f80hub/materiality_matrix_x86 . & docker push f80hub/materiality_matrix_x86:latest
 #pour les problemes de droit sur les répertoires : su -c "setenforce 0"
-#docker rm -f materiality_matrix_x86 && docker pull f80hub/materiality_matrix_x86:latest && docker run --restart=always -v /root/certs:/app/certs -p 6000:6000 --name materiality_matrix_x86 -d f80hub/materiality_matrix_x86:latest 6000 ssl
+#docker rm -f materiality_matrix_x86 && docker pull f80hub/materiality_matrix_x86:latest && docker run --restart=always -v /root/certs:/app/certs -p 6080:6080 --name materiality_matrix_x86 -d f80hub/materiality_matrix_x86:latest 6080 ssl
 
 
 #x86
@@ -65,7 +66,7 @@ RUN apk add cython
 RUN pip3 -v install pandas
 
 RUN pip3 install document
-RUN pip3 install textblob
+
 RUN pip3 install idna
 RUN pip3 install PyPDF2
 RUN pip3 install xlrd
@@ -78,8 +79,11 @@ RUN apk add py-setuptools
 RUN apk add  --no-cache --update-cache libxml2-dev libxslt-dev
 RUN easy_install -v google-search
 
-RUN apk add py3-openssl
+RUN pip3 install textblob
+RUN python3 -m textblob.download_corpora
 
+RUN apk add py3-openssl
+RUN pip3 install nltk
 
 EXPOSE 6000
 VOLUME /certs

@@ -27,10 +27,12 @@ class Document:
                 pass
 
     def extract_email(self):
-        html=urlToHTML(self.page)
-        self.emails=extract_emails(html)
-        print("Mail récupérés = "+str(self.emails))
-
+        try:
+            html=urlToHTML(self.page)
+            self.emails=extract_emails(html)
+            log("Mail récupérés = "+str(self.emails))
+        except:
+            log("Pas de récupération des mail")
 
     def analyse(self,densite):
         if type(self.page) == str:
@@ -42,15 +44,18 @@ class Document:
         if len(text) > 0:
             mc = maxCaracteres(text)
             if mc > densite:
-                self.blob = TextBlob(text)
-                print("Analyse du sentiment -> ",end="")
-                sentiment=self.blob.sentiment
-                self.polarite = sentiment[1]
-                self.subjectivite=sentiment[0]
-                print("Mots clés -> ", end="")
-                self.words = get_words(text,200)
-                print("langue -> ", end="")
-                self.lang=self.blob.detect_language()
+                try:
+                    self.blob = TextBlob(text)
+                    print("Analyse du sentiment -> ",end="")
+                    sentiment=self.blob.sentiment
+                    self.polarite = sentiment[1]
+                    self.subjectivite=sentiment[0]
+                    print("Mots clés -> ", end="")
+                    self.words = get_words(text,200)
+                    print("langue -> ", end="")
+                    self.lang=self.blob.detect_language()
+                except:
+                    print("Erreur de traitement sur les analyses")
             else:
                 log("=> rejected because of density filter")
 

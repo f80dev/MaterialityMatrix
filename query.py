@@ -67,8 +67,8 @@ class Query:
         try:
             lr=self.result
         except:
-            pass
-
+            log("Probléme d'execution de la requete "+self.name)
+        log(str(len(lr))+" pages à analyser")
         for r in lr:  # Ouverture de la page
             if len(r)>0:
                 log("traitment de " + r)
@@ -90,6 +90,7 @@ class Query:
             self.audience += d.audience
             self.polarite += d.polarite
             self.subjectivite += d.subjectivite
+
 
         n_rows = float(len(self.documents))
         if n_rows>0:

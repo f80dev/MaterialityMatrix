@@ -1,22 +1,21 @@
 import ssl
 import sys
-from flask import Flask, Response, request, json
+import nltk
+from flask import Flask, Response, request, json, jsonify
 import pandas as pd
 import os
 from flask_cors import CORS
 from tools import log, urltodata, get_words, urlToString, urlToHTML
 
-app = Flask(__name__)
+app = Flask(__name__, instance_relative_config=True)
 
 @app.route('/')
 def help():
     return 'Welcome on MaterialityMatrix'
 
-#http://localhost:6000/search/GNIS/rse.xlsx
-#test2:http://localhost:5000/search/Michelin/rse.xlsx?format=xls
-#http://localhost:5000/search/Renault/ef.xlsx?format=json
-#test2:http://192.168.1.72:5000/search/Servier/rse.xlsx?format=xls
-#test2:http://ss.shifumix.com:5000/search/Altice/finances.xlsx?format=xls
+#http://localhost:6080/search/michelin/rse.xlsx
+#http://server.f80.fr:6080/search/GNIS/rse.xlsx
+#https://json.f80.fr/?file=https:%2F%2Fserver.f80.fr:6080%2Fsearch%2FGNIS%2Frse.xlsx
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
 def searchforbrand(brand:str,referentiel:str):
     log("Lancement du traitement pour " + brand)
@@ -25,7 +24,7 @@ def searchforbrand(brand:str,referentiel:str):
     if "format" in request.args:format=request.args["format"]
 
 
-    size=3
+    size=10
     if "size" in request.args: size= int(request.args["size"])
 
     if not referentiel.startswith("http"):
@@ -63,8 +62,8 @@ def searchforbrand(brand:str,referentiel:str):
                 search=row["query"],
                 brand=brand,
                 exclude=row["exclude"],
-                size=size,path="./temp")
-
+                size=size,
+                path="./temp")
             q.save_result("./temp")
             try:
                 q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
@@ -89,9 +88,11 @@ def searchforbrand(brand:str,referentiel:str):
     # result["analyses"].to_df().to_excel(excel_writer=writer, sheet_name="output")
     # writer.save()
 
-    return app.response_class(response=json.dumps(result),status=200,mimetype="application/json")
+    #return app.response_class(response=json.dumps(result),status=200,mimetype="application/json")
+    return jsonify(result)
 
 if __name__ == '__main__':
+    nltk.download('stopwords')
     CORS(app)
     _port = sys.argv[1]
     if "debug" in sys.argv:
