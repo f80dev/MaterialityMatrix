@@ -13,7 +13,7 @@ app = Flask(__name__, instance_relative_config=True)
 def help():
     return 'Welcome on MaterialityMatrix'
 
-#http://localhost:6080/search/michelin/rse.xlsx
+#http://localhost:6080/search/GNIS/rse.xlsx
 #http://server.f80.fr:6080/search/GNIS/rse.xlsx
 #https://json.f80.fr/?file=https:%2F%2Fserver.f80.fr:6080%2Fsearch%2FGNIS%2Frse.xlsx
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
@@ -45,15 +45,15 @@ def searchforbrand(brand:str,referentiel:str):
             return pd.read_pickle("./saved/"+filename)
 
 
-    words=get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/Responsabilit%C3%A9_soci%C3%A9tale_des_entreprises")), 30)
-    #words = get_words(urlToString(urlToHTML("https://fr.wikipedia.org/wiki/%C3%89vasion_fiscale")), 40)
-    dt=pd.DataFrame(columns=["name","url"]+words)
-
     result = dict()
     result["analyses"]=list()
 
     for i in range(len(data)):
         row=data.iloc[i] #Contient chaque ligne du fichier d'input
+
+        if len(row["Projection"])>0:
+            words = get_words(urlToString(urlToHTML(row["projection"])), 30)
+            dt = pd.DataFrame(columns=["name", "url"] + words)
 
         if row["Execute"]:
             from query import Query

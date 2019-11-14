@@ -34,7 +34,7 @@ def extract_domain(url:str):
 
 def extract_emails(text:str):
     if text is None:return list()
-    match = re.findall(r'[\w\.-]+@[\w\.-]+', text)
+    match = re.findall(r'[\w\.-]+@[\w\.-]+', str(text))
     return match
 
 def maxCaracteres(text:str):
@@ -101,7 +101,7 @@ def get_words(text:str,n_words:int=20):
 
 def urlToHTML(url:str,req=None):
     if url is None or len(url)==0:return None
-
+    if not url.startswith("http"):return url
     try:
         req=Request(url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'})
         page = urlopen(req)

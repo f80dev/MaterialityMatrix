@@ -10,6 +10,7 @@ class Query:
     name:str=""
     search:str=""
     brand:str=""
+    exclude:str=""
     documents:list=[]
 
     score = 1e10
@@ -22,7 +23,8 @@ class Query:
         self.name=name
         self.search=search
         self.brand=brand
-        self.exclude=exclude.lower().replace("$brand", brand.lower())
+        if exclude is not None and type(exclude)==str:
+            self.exclude=exclude.lower().replace("$brand", brand.lower())
 
         self.google_query = "\"" + brand + "\" AND (" + search + ")"
         if not self.load_result(path):

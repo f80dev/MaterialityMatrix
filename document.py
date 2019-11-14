@@ -28,8 +28,7 @@ class Document:
 
     def extract_email(self):
         try:
-            html=urlToHTML(self.page)
-            self.emails=extract_emails(html)
+            self.emails=extract_emails(self.page)
             log("Mail récupérés = "+str(self.emails))
         except:
             log("Pas de récupération des mail")
