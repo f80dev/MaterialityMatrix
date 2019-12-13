@@ -13,6 +13,7 @@ app = Flask(__name__, instance_relative_config=True)
 def help():
     return 'Welcome on MaterialityMatrix'
 
+#http://192.168.1.4:7080/search/GNIS/rse.xlsx
 #http://localhost:6080/search/GNIS/rse.xlsx
 #http://server.f80.fr:6080/search/GNIS/rse.xlsx
 #https://json.f80.fr/?file=https:%2F%2Fserver.f80.fr:6080%2Fsearch%2FGNIS%2Frse.xlsx
@@ -51,8 +52,8 @@ def searchforbrand(brand:str,referentiel:str):
     for i in range(len(data)):
         row=data.iloc[i] #Contient chaque ligne du fichier d'input
 
-        if len(row["Projection"])>0:
-            words = get_words(urlToString(urlToHTML(row["projection"])), 30)
+        if "Projection" in row and isinstance(row["Projection"],str) and len(row["Projection"])>0:
+            words = get_words(urlToString(urlToHTML(row["Projection"])), 30)
             dt = pd.DataFrame(columns=["name", "url"] + words)
 
         if row["Execute"]:

@@ -1,0 +1,463 @@
+{
+  "analyses": [
+    {
+      "audience": 10833333333.333334,
+      "documents": [
+        {
+          "audience": 10000000000.0,
+          "lang": "fr",
+          "polarite": 0.23125,
+          "score": 10000000000.0,
+          "subjectivite": 0.11822916666666668,
+          "title": "Appel \u00e0 projets \u2013 RAIN",
+          "url": "https://rain-innovation.fr/appel-a-projets/"
+        },
+        {
+          "audience": 10000000000.0,
+          "lang": "en",
+          "polarite": 0.24838154269972448,
+          "score": 10000000000.0,
+          "subjectivite": 0.07223370064279155,
+          "title": "Program 2019 \u2013 LFDay",
+          "url": "https://lfday.fr/en/program-2019/"
+        },
+        null,
+        null,
+        {
+          "audience": 10000000000.0,
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "Prix Imagin'ma\u00efs' 2018-2019 | Ma\u00efs Culture Durable",
+          "url": "https://www.maisculturedurable.com/prix-imaginmais-2018-2019/"
+        },
+        {
+          "audience": 10000000000.0,
+          "lang": "fr",
+          "polarite": 0.5265151515151516,
+          "score": 10000000000.0,
+          "subjectivite": 0.07007575757575757,
+          "title": "Ils nous accompagnent",
+          "url": "https://concours-agriculteurs-davenir.fr/partenaires/"
+        },
+        {
+          "audience": 10000000000.0,
+          "lang": "fr",
+          "polarite": 0.5225618720901739,
+          "score": 10000000000.0,
+          "subjectivite": 0.2854281528220208,
+          "title": "Vegetable crops | SIVAL Innovation",
+          "url": "https://www.sival-innovation.com/en/category/vegetable-crops/"
+        },
+        {
+          "audience": 10000000000.0,
+          "lang": "fr",
+          "polarite": 0.594733893557423,
+          "score": 10000000000.0,
+          "subjectivite": 0.22188725490196076,
+          "title": "GNIS : Teillage St Martin et Terre de Lin, distributeurs de Semences Certifi\u00e9es de Lin High Tech, r\u00e9compens\u00e9s en juillet 2019 pour leurs actions par les Troph\u00e9es de la Performance et du Dynamisme",
+          "url": "https://www.secteurvert.com/distributeurs/distribution/presentations/item/3504-gnis-teillage-st-martin-et-terre-de-lin-distributeurs-de-semences-certifiees-de-lin-high-tech-recompenses-en-juillet-2019-pour-leurs-actions-par-les-trophees-de-la-performance-et-du-dynamisme.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "lang": "fr",
+          "polarite": 0.4681017532168742,
+          "score": 10000000000.0,
+          "subjectivite": 0.04288514171332036,
+          "title": "",
+          "url": "https://www.fsov.org/uploads/2019/8/FSOV-2019-Actes-Colloques.pdf"
+        },
+        {
+          "audience": 10000000000.0,
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02071220v2/document"
+        },
+        {
+          "audience": 10000000000.0,
+          "lang": "en",
+          "polarite": 0.6875,
+          "score": 10000000000.0,
+          "subjectivite": -0.65625,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02183129/document"
+        },
+        null
+      ],
+      "name": "Innovation",
+      "polarite": 0.2732536844232789,
+      "query": "\"GNIS\" AND (\"innovation\" OR  ~innovation OR \"innovation collaborative\" OR \"innovation ouverte\" OR \"collaboratif\" OR \"collaborative\" OR \"collaboration\" \"partenariat\" OR \"innovating\" OR \"open innovation\" OR \"partnership\")",
+      "score": 10000000000.0,
+      "subjectivite": 0.012874097860209812
+    }
+  ],
+  "projection": {
+    "2006": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 11,
+      "7": 6,
+      "8": 0
+    },
+    "article": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 4,
+      "7": 0,
+      "8": 0
+    },
+    "aspects": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 1,
+      "7": 0,
+      "8": 0
+    },
+    "code": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 1,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "communication": {
+      "0": 0,
+      "1": 3,
+      "2": 0,
+      "3": 2,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 0,
+      "8": 0
+    },
+    "droit": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "durable": {
+      "0": 10,
+      "1": 1,
+      "2": 1,
+      "3": 8,
+      "4": 3,
+      "5": 3,
+      "6": 9,
+      "7": 0,
+      "8": 0
+    },
+    "d\u00e9veloppement": {
+      "0": 14,
+      "1": 0,
+      "2": 0,
+      "3": 9,
+      "4": 2,
+      "5": 0,
+      "6": 32,
+      "7": 0,
+      "8": 0
+    },
+    "entreprise": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 5,
+      "4": 0,
+      "5": 0,
+      "6": 3,
+      "7": 0,
+      "8": 0
+    },
+    "entreprises": {
+      "0": 5,
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 4,
+      "6": 1,
+      "7": 0,
+      "8": 0
+    },
+    "iso": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 2,
+      "7": 0,
+      "8": 0
+    },
+    "l'entreprise": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "leurs": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 2,
+      "4": 0,
+      "5": 2,
+      "6": 16,
+      "7": 0,
+      "8": 0
+    },
+    "loi": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 1,
+      "7": 0,
+      "8": 0
+    },
+    "mise": {
+      "0": 4,
+      "1": 0,
+      "2": 0,
+      "3": 2,
+      "4": 1,
+      "5": 0,
+      "6": 17,
+      "7": 0,
+      "8": 0
+    },
+    "modifier": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "name": {
+      "0": "Appel \u00e0 projets \u2013 RAIN",
+      "1": "Program 2019 \u2013 LFDay",
+      "2": "Prix Imagin'ma\u00efs' 2018-2019 | Ma\u00efs Culture Durable",
+      "3": "Ils nous accompagnent",
+      "4": "Vegetable crops | SIVAL Innovation",
+      "5": "GNIS : Teillage St Martin et Terre de Lin, distributeurs de Semences Certifi\u00e9es de Lin High Tech, r\u00e9compens\u00e9s en juillet 2019 pour leurs actions par les Troph\u00e9es de la Performance et du Dynamisme",
+      "6": "",
+      "7": "",
+      "8": ""
+    },
+    "normes": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "obligation": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "parties": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "prenantes": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "query": {
+      "0": "Innovation",
+      "1": "Innovation",
+      "2": "Innovation",
+      "3": "Innovation",
+      "4": "Innovation",
+      "5": "Innovation",
+      "6": "Innovation",
+      "7": "Innovation",
+      "8": "Innovation"
+    },
+    "rapport": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 27,
+      "7": 0,
+      "8": 0
+    },
+    "responsabilit\u00e9": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "rse": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "salari\u00e9s": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 1,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "social": {
+      "0": 0,
+      "1": 2,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "sociale": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "soci\u00e9tale": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0
+    },
+    "soci\u00e9t\u00e9s": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 1,
+      "7": 0,
+      "8": 0
+    },
+    "url": {
+      "0": "https://rain-innovation.fr/appel-a-projets/",
+      "1": "https://lfday.fr/en/program-2019/",
+      "2": "https://www.maisculturedurable.com/prix-imaginmais-2018-2019/",
+      "3": "https://concours-agriculteurs-davenir.fr/partenaires/",
+      "4": "https://www.sival-innovation.com/en/category/vegetable-crops/",
+      "5": "https://www.secteurvert.com/distributeurs/distribution/presentations/item/3504-gnis-teillage-st-martin-et-terre-de-lin-distributeurs-de-semences-certifiees-de-lin-high-tech-recompenses-en-juillet-2019-pour-leurs-actions-par-les-trophees-de-la-performance-et-du-dynamisme.html",
+      "6": "https://www.fsov.org/uploads/2019/8/FSOV-2019-Actes-Colloques.pdf",
+      "7": "https://tel.archives-ouvertes.fr/tel-02071220v2/document",
+      "8": "https://tel.archives-ouvertes.fr/tel-02183129/document"
+    },
+    "voir": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 10,
+      "7": 0,
+      "8": 0
+    },
+    "\u0153uvre": {
+      "0": 3,
+      "1": 0,
+      "2": 0,
+      "3": 2,
+      "4": 0,
+      "5": 1,
+      "6": 2,
+      "7": 0,
+      "8": 0
+    }
+  }
+}
