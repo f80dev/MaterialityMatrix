@@ -5,6 +5,7 @@
       "documents": [
         {
           "audience": 10000000000.0,
+          "emails": [],
           "lang": "fr",
           "polarite": 0.23125,
           "score": 10000000000.0,
@@ -14,6 +15,10 @@
         },
         {
           "audience": 10000000000.0,
+          "emails": [
+            "melanie@lafermedigitale.fr",
+            "melanie@lafermedigitale.fr"
+          ],
           "lang": "en",
           "polarite": 0.24838154269972448,
           "score": 10000000000.0,
@@ -25,6 +30,10 @@
         null,
         {
           "audience": 10000000000.0,
+          "emails": [
+            "imaginmais@bm.com",
+            "imaginmais@bm.com"
+          ],
           "lang": "fr",
           "polarite": 0.0,
           "score": 10000000000.0,
@@ -34,6 +43,11 @@
         },
         {
           "audience": 10000000000.0,
+          "emails": [
+            "contact@concours-agriculteurs-davenir.fr",
+            "contact@concours-agriculteurs-davenir.fr",
+            "cached@1576227664"
+          ],
           "lang": "fr",
           "polarite": 0.5265151515151516,
           "score": 10000000000.0,
@@ -43,6 +57,7 @@
         },
         {
           "audience": 10000000000.0,
+          "emails": [],
           "lang": "fr",
           "polarite": 0.5225618720901739,
           "score": 10000000000.0,
@@ -52,6 +67,10 @@
         },
         {
           "audience": 10000000000.0,
+          "emails": [
+            "magnific-popup@1.1.0",
+            "simple-line-icons@2.4.1"
+          ],
           "lang": "fr",
           "polarite": 0.594733893557423,
           "score": 10000000000.0,
@@ -61,6 +80,25 @@
         },
         {
           "audience": 10000000000.0,
+          "emails": [
+            "fsov@gnis.frwww.fsov.orgMars",
+            "fsov@gnis.frwww.fsov.orgFonds",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "ellen.goudemand@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "delphine.taillieu@florimond-desprez.fr",
+            "mickael.throude@biogemma.com",
+            "jp.cohan@arvalis.fr",
+            "j.lorgeou@arvalis.fr",
+            "lduchalais@ragt.fr",
+            "stephane.lafarge@Biogemma.com",
+            "bruno.poupard@limagrain.com72\u00c9tablissement",
+            "marc-henri.lebrun@inra.fr",
+            "pascal.giraudeau@secobra.com",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "fsov@gnis.frwww.fsov.orgMars"
+          ],
           "lang": "fr",
           "polarite": 0.4681017532168742,
           "score": 10000000000.0,
@@ -70,6 +108,20 @@
         },
         {
           "audience": 10000000000.0,
+          "emails": [
+            "disontenconcurrenceavecdesrmesmulti-produits.4.Celasetraduitparlefaitquelessignesdesderiveespartielles@fA",
+            "pAet@fB",
+            "pBsontnegatifsetlessignesdesderiveespartielles@fA",
+            "pBet@fB",
+            "2\u02c7F@2",
+            "wehave@\u02c7M",
+            "\u02c7M2C@y0A",
+            "\u02c7M2C@y0B",
+            "\u02c7M2I@y0A",
+            "\u02c7M2I@y0B",
+            "M1A@A",
+            "1and@M1A"
+          ],
           "lang": "fr",
           "polarite": 0.0,
           "score": 10000000000.0,
@@ -79,6 +131,9 @@
         },
         {
           "audience": 10000000000.0,
+          "emails": [
+            "8@A9"
+          ],
           "lang": "en",
           "polarite": 0.6875,
           "score": 10000000000.0,
@@ -93,371 +148,980 @@
       "query": "\"GNIS\" AND (\"innovation\" OR  ~innovation OR \"innovation collaborative\" OR \"innovation ouverte\" OR \"collaboratif\" OR \"collaborative\" OR \"collaboration\" \"partenariat\" OR \"innovating\" OR \"open innovation\" OR \"partnership\")",
       "score": 10000000000.0,
       "subjectivite": 0.012874097860209812
+    },
+    {
+      "audience": 10526315789.473684,
+      "documents": [
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.23125,
+          "score": 10000000000.0,
+          "subjectivite": 0.11822916666666668,
+          "title": "Appel \u00e0 projets \u2013 RAIN",
+          "url": "https://rain-innovation.fr/appel-a-projets/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "melanie@lafermedigitale.fr",
+            "melanie@lafermedigitale.fr"
+          ],
+          "lang": "en",
+          "polarite": 0.24838154269972448,
+          "score": 10000000000.0,
+          "subjectivite": 0.07223370064279155,
+          "title": "Program 2019 \u2013 LFDay",
+          "url": "https://lfday.fr/en/program-2019/"
+        },
+        null,
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "imaginmais@bm.com",
+            "imaginmais@bm.com"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "Prix Imagin'ma\u00efs' 2018-2019 | Ma\u00efs Culture Durable",
+          "url": "https://www.maisculturedurable.com/prix-imaginmais-2018-2019/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@concours-agriculteurs-davenir.fr",
+            "contact@concours-agriculteurs-davenir.fr",
+            "cached@1576227664"
+          ],
+          "lang": "fr",
+          "polarite": 0.5265151515151516,
+          "score": 10000000000.0,
+          "subjectivite": 0.07007575757575757,
+          "title": "Ils nous accompagnent",
+          "url": "https://concours-agriculteurs-davenir.fr/partenaires/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.5225618720901739,
+          "score": 10000000000.0,
+          "subjectivite": 0.2854281528220208,
+          "title": "Vegetable crops | SIVAL Innovation",
+          "url": "https://www.sival-innovation.com/en/category/vegetable-crops/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "magnific-popup@1.1.0",
+            "simple-line-icons@2.4.1"
+          ],
+          "lang": "fr",
+          "polarite": 0.594733893557423,
+          "score": 10000000000.0,
+          "subjectivite": 0.22188725490196076,
+          "title": "GNIS : Teillage St Martin et Terre de Lin, distributeurs de Semences Certifi\u00e9es de Lin High Tech, r\u00e9compens\u00e9s en juillet 2019 pour leurs actions par les Troph\u00e9es de la Performance et du Dynamisme",
+          "url": "https://www.secteurvert.com/distributeurs/distribution/presentations/item/3504-gnis-teillage-st-martin-et-terre-de-lin-distributeurs-de-semences-certifiees-de-lin-high-tech-recompenses-en-juillet-2019-pour-leurs-actions-par-les-trophees-de-la-performance-et-du-dynamisme.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "fsov@gnis.frwww.fsov.orgMars",
+            "fsov@gnis.frwww.fsov.orgFonds",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "ellen.goudemand@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "delphine.taillieu@florimond-desprez.fr",
+            "mickael.throude@biogemma.com",
+            "jp.cohan@arvalis.fr",
+            "j.lorgeou@arvalis.fr",
+            "lduchalais@ragt.fr",
+            "stephane.lafarge@Biogemma.com",
+            "bruno.poupard@limagrain.com72\u00c9tablissement",
+            "marc-henri.lebrun@inra.fr",
+            "pascal.giraudeau@secobra.com",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "fsov@gnis.frwww.fsov.orgMars"
+          ],
+          "lang": "fr",
+          "polarite": 0.4681017532168742,
+          "score": 10000000000.0,
+          "subjectivite": 0.04288514171332036,
+          "title": "",
+          "url": "https://www.fsov.org/uploads/2019/8/FSOV-2019-Actes-Colloques.pdf"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "disontenconcurrenceavecdesrmesmulti-produits.4.Celasetraduitparlefaitquelessignesdesderiveespartielles@fA",
+            "pAet@fB",
+            "pBsontnegatifsetlessignesdesderiveespartielles@fA",
+            "pBet@fB",
+            "2\u02c7F@2",
+            "wehave@\u02c7M",
+            "\u02c7M2C@y0A",
+            "\u02c7M2C@y0B",
+            "\u02c7M2I@y0A",
+            "\u02c7M2I@y0B",
+            "M1A@A",
+            "1and@M1A"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02071220v2/document"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "8@A9"
+          ],
+          "lang": "en",
+          "polarite": 0.6875,
+          "score": 10000000000.0,
+          "subjectivite": -0.65625,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02183129/document"
+        },
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "monemail@domaine.fr"
+          ],
+          "lang": "fr",
+          "polarite": 0.2964285714285715,
+          "score": 10000000000.0,
+          "subjectivite": -0.06507936507936508,
+          "title": "Le Gnis s'ouvre \u00e0 la concurrence - Produits agricoles",
+          "url": "https://www.usinenouvelle.com/article/le-gnis-s-ouvre-a-la-concurrence.N834365"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@geves.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "MOOC semences avec le GNIS : les inscriptions sont ouvertes ! - GEVES",
+          "url": "https://www.geves.fr/actualites/mooc-semences-avec-le-gnis-les-inscriptions-sont-ouvertes/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "elodie.saumureau@gnis.fr",
+            "asfis@gnis.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "Pr\u00e9paration au certificat Bases pour l\u2019analyste de semences | Management, communication & vente",
+          "url": "https://asfis.org/preparation-au-certificat-bases-pour-l-analyste-de-semences"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.6326530612244898,
+          "score": 10000000000.0,
+          "subjectivite": 0.03061224489795917,
+          "title": "Concours Prairies - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/concours-prairies-palmares-gagnant.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.3916666666666666,
+          "score": 10000000000.0,
+          "subjectivite": 0.19999999999999998,
+          "title": "Revue de presse du secteur semences - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/gnis-pedagogie-actualites.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@plantesfourrageres.org",
+            "contact@plantesfourrageres.org",
+            "delegue_protection_donnees@gnis.fr",
+            "contact@plantesfourrageres.org"
+          ],
+          "lang": "fr",
+          "polarite": 0.5351851851851852,
+          "score": 10000000000.0,
+          "subjectivite": -0.0018518518518518576,
+          "title": "Les plantes fourrag\u00e8res : mentions l\u00e9gales",
+          "url": "http://www.prairies-gnis.org/pages/mentions.htm"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "delegue_protection_donnees@gnis.fr",
+            "sempro@sempro.net",
+            "sempro@sempro.net"
+          ],
+          "lang": "fr",
+          "polarite": 0.5725198412698412,
+          "score": 10000000000.0,
+          "subjectivite": 0.031051587301587302,
+          "title": "Informations l\u00e9gales - Semences & Progr\u00e8s : la revue de la distribution pour les semences et l'agrofourniture",
+          "url": "https://www.semences-et-progres.fr/informations-legales_16.html"
+        }
+      ],
+      "name": "Eco-conception",
+      "polarite": 0.3003946073081106,
+      "query": "\"GNIS\" AND (\"\u00e9co-conception\" OR  ~\u00e9co-conception OR \"eco-design\" OR  ~eco-design OR \"\u00e9coconception\" OR  ~\u00e9coconception OR \"ecodesign\" OR  ~ecodesign OR \"\u00e9co-socio-conception\" OR \"social eco-design\" OR \"all\u00e8gement des mat\u00e9riaux\" OR \"material weight reduction\" OR \"\u00e9conomie circulaire\" OR \"circular economy\" OR \"ACV\" OR \"LCA\" OR \"analyse du cycle de vie\" OR \"lifecycle analysis\" OR \"allongement de la dur\u00e9e de vie\" OR \"extension of product life\" OR \"recyclabilit\u00e9\" OR \"recyclability\" OR \"reusability\" OR \"recycl\u00e9\" OR \"recycled\" OR \"valorisation \u00e9nerg\u00e9tique\" OR \"energy valorization\" OR \"valorisation mati\u00e8re\" OR \"material valorization\" OR \"material recovery\")",
+      "score": 10000000000.0,
+      "subjectivite": 0.01838009418899196
+    },
+    {
+      "audience": 10526315789.473684,
+      "documents": [
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.23125,
+          "score": 10000000000.0,
+          "subjectivite": 0.11822916666666668,
+          "title": "Appel \u00e0 projets \u2013 RAIN",
+          "url": "https://rain-innovation.fr/appel-a-projets/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "melanie@lafermedigitale.fr",
+            "melanie@lafermedigitale.fr"
+          ],
+          "lang": "en",
+          "polarite": 0.24838154269972448,
+          "score": 10000000000.0,
+          "subjectivite": 0.07223370064279155,
+          "title": "Program 2019 \u2013 LFDay",
+          "url": "https://lfday.fr/en/program-2019/"
+        },
+        null,
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "imaginmais@bm.com",
+            "imaginmais@bm.com"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "Prix Imagin'ma\u00efs' 2018-2019 | Ma\u00efs Culture Durable",
+          "url": "https://www.maisculturedurable.com/prix-imaginmais-2018-2019/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@concours-agriculteurs-davenir.fr",
+            "contact@concours-agriculteurs-davenir.fr",
+            "cached@1576227664"
+          ],
+          "lang": "fr",
+          "polarite": 0.5265151515151516,
+          "score": 10000000000.0,
+          "subjectivite": 0.07007575757575757,
+          "title": "Ils nous accompagnent",
+          "url": "https://concours-agriculteurs-davenir.fr/partenaires/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.5225618720901739,
+          "score": 10000000000.0,
+          "subjectivite": 0.2854281528220208,
+          "title": "Vegetable crops | SIVAL Innovation",
+          "url": "https://www.sival-innovation.com/en/category/vegetable-crops/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "magnific-popup@1.1.0",
+            "simple-line-icons@2.4.1"
+          ],
+          "lang": "fr",
+          "polarite": 0.594733893557423,
+          "score": 10000000000.0,
+          "subjectivite": 0.22188725490196076,
+          "title": "GNIS : Teillage St Martin et Terre de Lin, distributeurs de Semences Certifi\u00e9es de Lin High Tech, r\u00e9compens\u00e9s en juillet 2019 pour leurs actions par les Troph\u00e9es de la Performance et du Dynamisme",
+          "url": "https://www.secteurvert.com/distributeurs/distribution/presentations/item/3504-gnis-teillage-st-martin-et-terre-de-lin-distributeurs-de-semences-certifiees-de-lin-high-tech-recompenses-en-juillet-2019-pour-leurs-actions-par-les-trophees-de-la-performance-et-du-dynamisme.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "fsov@gnis.frwww.fsov.orgMars",
+            "fsov@gnis.frwww.fsov.orgFonds",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "ellen.goudemand@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "delphine.taillieu@florimond-desprez.fr",
+            "mickael.throude@biogemma.com",
+            "jp.cohan@arvalis.fr",
+            "j.lorgeou@arvalis.fr",
+            "lduchalais@ragt.fr",
+            "stephane.lafarge@Biogemma.com",
+            "bruno.poupard@limagrain.com72\u00c9tablissement",
+            "marc-henri.lebrun@inra.fr",
+            "pascal.giraudeau@secobra.com",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "fsov@gnis.frwww.fsov.orgMars"
+          ],
+          "lang": "fr",
+          "polarite": 0.4681017532168742,
+          "score": 10000000000.0,
+          "subjectivite": 0.04288514171332036,
+          "title": "",
+          "url": "https://www.fsov.org/uploads/2019/8/FSOV-2019-Actes-Colloques.pdf"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "disontenconcurrenceavecdesrmesmulti-produits.4.Celasetraduitparlefaitquelessignesdesderiveespartielles@fA",
+            "pAet@fB",
+            "pBsontnegatifsetlessignesdesderiveespartielles@fA",
+            "pBet@fB",
+            "2\u02c7F@2",
+            "wehave@\u02c7M",
+            "\u02c7M2C@y0A",
+            "\u02c7M2C@y0B",
+            "\u02c7M2I@y0A",
+            "\u02c7M2I@y0B",
+            "M1A@A",
+            "1and@M1A"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02071220v2/document"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "8@A9"
+          ],
+          "lang": "en",
+          "polarite": 0.6875,
+          "score": 10000000000.0,
+          "subjectivite": -0.65625,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02183129/document"
+        },
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "monemail@domaine.fr"
+          ],
+          "lang": "fr",
+          "polarite": 0.2964285714285715,
+          "score": 10000000000.0,
+          "subjectivite": -0.06507936507936508,
+          "title": "Le Gnis s'ouvre \u00e0 la concurrence - Produits agricoles",
+          "url": "https://www.usinenouvelle.com/article/le-gnis-s-ouvre-a-la-concurrence.N834365"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@geves.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "MOOC semences avec le GNIS : les inscriptions sont ouvertes ! - GEVES",
+          "url": "https://www.geves.fr/actualites/mooc-semences-avec-le-gnis-les-inscriptions-sont-ouvertes/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "elodie.saumureau@gnis.fr",
+            "asfis@gnis.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "Pr\u00e9paration au certificat Bases pour l\u2019analyste de semences | Management, communication & vente",
+          "url": "https://asfis.org/preparation-au-certificat-bases-pour-l-analyste-de-semences"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.6326530612244898,
+          "score": 10000000000.0,
+          "subjectivite": 0.03061224489795917,
+          "title": "Concours Prairies - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/concours-prairies-palmares-gagnant.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.3916666666666666,
+          "score": 10000000000.0,
+          "subjectivite": 0.19999999999999998,
+          "title": "Revue de presse du secteur semences - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/gnis-pedagogie-actualites.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@plantesfourrageres.org",
+            "contact@plantesfourrageres.org",
+            "delegue_protection_donnees@gnis.fr",
+            "contact@plantesfourrageres.org"
+          ],
+          "lang": "fr",
+          "polarite": 0.5351851851851852,
+          "score": 10000000000.0,
+          "subjectivite": -0.0018518518518518576,
+          "title": "Les plantes fourrag\u00e8res : mentions l\u00e9gales",
+          "url": "http://www.prairies-gnis.org/pages/mentions.htm"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "delegue_protection_donnees@gnis.fr",
+            "sempro@sempro.net",
+            "sempro@sempro.net"
+          ],
+          "lang": "fr",
+          "polarite": 0.5725198412698412,
+          "score": 10000000000.0,
+          "subjectivite": 0.031051587301587302,
+          "title": "Informations l\u00e9gales - Semences & Progr\u00e8s : la revue de la distribution pour les semences et l'agrofourniture",
+          "url": "https://www.semences-et-progres.fr/informations-legales_16.html"
+        }
+      ],
+      "name": "Risques et impacts environnementaux",
+      "polarite": 0.3003946073081106,
+      "query": "\"GNIS\" AND (\"bio-sourc\u00e9\" OR ~bio-sourc\u00e9 \"biosourc\u00e9\" OR \"bio sourc\u00e9\" OR \"biobased\" OR \"bio-sourced\" OR \"bio sourced\" OR \"biodiversit\u00e9\" OR \"biodiversity\" OR \"consommation AND eau\" OR \"water consumption\" OR \"consommation \u00e9nergie\" OR \"energy consumption\" OR \"production de d\u00e9chets\" OR \"waste production\" OR \"\u00e9cologie industrielle\" OR \"industrial ecology\" OR \"\u00e9nergies renouvelables\" OR \"renewable energy\" OR \"changement climatique\" OR \"climate change\" OR \"management de l'environnement\" OR \"environment management\" OR \"couche d'ozone\" OR \"ozone layer\" OR \"\u00e9missions de gaz \u00e0 effet de serre\" OR \"greenhouse gases emissions\" OR \"GES\" OR \"GHG\" OR \"habitat durable\" OR \"sustainable habitat\" OR \"sustainable housing\" OR \"rejets\" OR \"emissions\" OR \"isolation\" OR \"insulation\" OR \"pollution\" OR \"ressources naturelles\" OR \"natural resources\" OR \"ressources fossiles\" OR \"fossile resources\" OR \"non-renouvelable\" OR \"non-renewable\" OR \"packaging\" OR \"pack\" OR \"d\u00e9chets\" OR \"waste\" OR \"empreinte\" OR \"footprint\" OR \"carburant\" OR \"fuel\" OR \"oil\" OR \"gas\" OR \"organiques\" OR \"organic\")",
+      "score": 10000000000.0,
+      "subjectivite": 0.01838009418899196
+    },
+    {
+      "audience": 10526315789.473684,
+      "documents": [
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.23125,
+          "score": 10000000000.0,
+          "subjectivite": 0.11822916666666668,
+          "title": "Appel \u00e0 projets \u2013 RAIN",
+          "url": "https://rain-innovation.fr/appel-a-projets/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "melanie@lafermedigitale.fr",
+            "melanie@lafermedigitale.fr"
+          ],
+          "lang": "en",
+          "polarite": 0.24838154269972448,
+          "score": 10000000000.0,
+          "subjectivite": 0.07223370064279155,
+          "title": "Program 2019 \u2013 LFDay",
+          "url": "https://lfday.fr/en/program-2019/"
+        },
+        null,
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "imaginmais@bm.com",
+            "imaginmais@bm.com"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "Prix Imagin'ma\u00efs' 2018-2019 | Ma\u00efs Culture Durable",
+          "url": "https://www.maisculturedurable.com/prix-imaginmais-2018-2019/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@concours-agriculteurs-davenir.fr",
+            "contact@concours-agriculteurs-davenir.fr",
+            "cached@1576227664"
+          ],
+          "lang": "fr",
+          "polarite": 0.5265151515151516,
+          "score": 10000000000.0,
+          "subjectivite": 0.07007575757575757,
+          "title": "Ils nous accompagnent",
+          "url": "https://concours-agriculteurs-davenir.fr/partenaires/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.5225618720901739,
+          "score": 10000000000.0,
+          "subjectivite": 0.2854281528220208,
+          "title": "Vegetable crops | SIVAL Innovation",
+          "url": "https://www.sival-innovation.com/en/category/vegetable-crops/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "magnific-popup@1.1.0",
+            "simple-line-icons@2.4.1"
+          ],
+          "lang": "fr",
+          "polarite": 0.594733893557423,
+          "score": 10000000000.0,
+          "subjectivite": 0.22188725490196076,
+          "title": "GNIS : Teillage St Martin et Terre de Lin, distributeurs de Semences Certifi\u00e9es de Lin High Tech, r\u00e9compens\u00e9s en juillet 2019 pour leurs actions par les Troph\u00e9es de la Performance et du Dynamisme",
+          "url": "https://www.secteurvert.com/distributeurs/distribution/presentations/item/3504-gnis-teillage-st-martin-et-terre-de-lin-distributeurs-de-semences-certifiees-de-lin-high-tech-recompenses-en-juillet-2019-pour-leurs-actions-par-les-trophees-de-la-performance-et-du-dynamisme.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "fsov@gnis.frwww.fsov.orgMars",
+            "fsov@gnis.frwww.fsov.orgFonds",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "ellen.goudemand@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "delphine.taillieu@florimond-desprez.fr",
+            "mickael.throude@biogemma.com",
+            "jp.cohan@arvalis.fr",
+            "j.lorgeou@arvalis.fr",
+            "lduchalais@ragt.fr",
+            "stephane.lafarge@Biogemma.com",
+            "bruno.poupard@limagrain.com72\u00c9tablissement",
+            "marc-henri.lebrun@inra.fr",
+            "pascal.giraudeau@secobra.com",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "fsov@gnis.frwww.fsov.orgMars"
+          ],
+          "lang": "fr",
+          "polarite": 0.4681017532168742,
+          "score": 10000000000.0,
+          "subjectivite": 0.04288514171332036,
+          "title": "",
+          "url": "https://www.fsov.org/uploads/2019/8/FSOV-2019-Actes-Colloques.pdf"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "disontenconcurrenceavecdesrmesmulti-produits.4.Celasetraduitparlefaitquelessignesdesderiveespartielles@fA",
+            "pAet@fB",
+            "pBsontnegatifsetlessignesdesderiveespartielles@fA",
+            "pBet@fB",
+            "2\u02c7F@2",
+            "wehave@\u02c7M",
+            "\u02c7M2C@y0A",
+            "\u02c7M2C@y0B",
+            "\u02c7M2I@y0A",
+            "\u02c7M2I@y0B",
+            "M1A@A",
+            "1and@M1A"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02071220v2/document"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "8@A9"
+          ],
+          "lang": "en",
+          "polarite": 0.6875,
+          "score": 10000000000.0,
+          "subjectivite": -0.65625,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02183129/document"
+        },
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "monemail@domaine.fr"
+          ],
+          "lang": "fr",
+          "polarite": 0.2964285714285715,
+          "score": 10000000000.0,
+          "subjectivite": -0.06507936507936508,
+          "title": "Le Gnis s'ouvre \u00e0 la concurrence - Produits agricoles",
+          "url": "https://www.usinenouvelle.com/article/le-gnis-s-ouvre-a-la-concurrence.N834365"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@geves.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "MOOC semences avec le GNIS : les inscriptions sont ouvertes ! - GEVES",
+          "url": "https://www.geves.fr/actualites/mooc-semences-avec-le-gnis-les-inscriptions-sont-ouvertes/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "elodie.saumureau@gnis.fr",
+            "asfis@gnis.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "Pr\u00e9paration au certificat Bases pour l\u2019analyste de semences | Management, communication & vente",
+          "url": "https://asfis.org/preparation-au-certificat-bases-pour-l-analyste-de-semences"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.6326530612244898,
+          "score": 10000000000.0,
+          "subjectivite": 0.03061224489795917,
+          "title": "Concours Prairies - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/concours-prairies-palmares-gagnant.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.3916666666666666,
+          "score": 10000000000.0,
+          "subjectivite": 0.19999999999999998,
+          "title": "Revue de presse du secteur semences - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/gnis-pedagogie-actualites.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@plantesfourrageres.org",
+            "contact@plantesfourrageres.org",
+            "delegue_protection_donnees@gnis.fr",
+            "contact@plantesfourrageres.org"
+          ],
+          "lang": "fr",
+          "polarite": 0.5351851851851852,
+          "score": 10000000000.0,
+          "subjectivite": -0.0018518518518518576,
+          "title": "Les plantes fourrag\u00e8res : mentions l\u00e9gales",
+          "url": "http://www.prairies-gnis.org/pages/mentions.htm"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "delegue_protection_donnees@gnis.fr",
+            "sempro@sempro.net",
+            "sempro@sempro.net"
+          ],
+          "lang": "fr",
+          "polarite": 0.5725198412698412,
+          "score": 10000000000.0,
+          "subjectivite": 0.031051587301587302,
+          "title": "Informations l\u00e9gales - Semences & Progr\u00e8s : la revue de la distribution pour les semences et l'agrofourniture",
+          "url": "https://www.semences-et-progres.fr/informations-legales_16.html"
+        }
+      ],
+      "name": "Ethique des affaires",
+      "polarite": 0.3003946073081106,
+      "query": "\"GNIS\" AND (\"corruption\" OR ~corruption OR \"bribery\" OR \"concurrence\" OR \"competition\" OR \"confidentialit\u00e9\" OR \"confidentiality\" OR \"gestes commerciaux\" OR \"commercial gestures\" OR \"honn\u00eatet\u00e9\" OR \"honest\" OR \"\u00e9thique\" OR \"ethical\" OR \"conflit\" OR \"conflict\" OR \"int\u00e9rpet OR \"interest\" OR \"op\u00e9rations d'initi\u00e9s\" OR \"insider trading\" OR \"insider dealing\" OR \"droit\" OR \"right\" OR \"droits\" OR \"rights\" OR \"respect des r\u00e8glementations\" OR \"regulatory compliance\" OR \"respect\" OR \"compliance\" OR \"achats responsables\" OR \"sustainable procurement\" OR \"responsible purchasing\" OR \"\u00e9quitable\" OR \"fair\")",
+      "score": 10000000000.0,
+      "subjectivite": 0.01838009418899196
+    },
+    {
+      "audience": 10454545454.545454,
+      "documents": [
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.23125,
+          "score": 10000000000.0,
+          "subjectivite": 0.11822916666666668,
+          "title": "Appel \u00e0 projets \u2013 RAIN",
+          "url": "https://rain-innovation.fr/appel-a-projets/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "melanie@lafermedigitale.fr",
+            "melanie@lafermedigitale.fr"
+          ],
+          "lang": "en",
+          "polarite": 0.24838154269972448,
+          "score": 10000000000.0,
+          "subjectivite": 0.07223370064279155,
+          "title": "Program 2019 \u2013 LFDay",
+          "url": "https://lfday.fr/en/program-2019/"
+        },
+        null,
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "imaginmais@bm.com",
+            "imaginmais@bm.com"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "Prix Imagin'ma\u00efs' 2018-2019 | Ma\u00efs Culture Durable",
+          "url": "https://www.maisculturedurable.com/prix-imaginmais-2018-2019/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@concours-agriculteurs-davenir.fr",
+            "contact@concours-agriculteurs-davenir.fr",
+            "cached@1576227664"
+          ],
+          "lang": "fr",
+          "polarite": 0.5265151515151516,
+          "score": 10000000000.0,
+          "subjectivite": 0.07007575757575757,
+          "title": "Ils nous accompagnent",
+          "url": "https://concours-agriculteurs-davenir.fr/partenaires/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.5225618720901739,
+          "score": 10000000000.0,
+          "subjectivite": 0.2854281528220208,
+          "title": "Vegetable crops | SIVAL Innovation",
+          "url": "https://www.sival-innovation.com/en/category/vegetable-crops/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "magnific-popup@1.1.0",
+            "simple-line-icons@2.4.1"
+          ],
+          "lang": "fr",
+          "polarite": 0.594733893557423,
+          "score": 10000000000.0,
+          "subjectivite": 0.22188725490196076,
+          "title": "GNIS : Teillage St Martin et Terre de Lin, distributeurs de Semences Certifi\u00e9es de Lin High Tech, r\u00e9compens\u00e9s en juillet 2019 pour leurs actions par les Troph\u00e9es de la Performance et du Dynamisme",
+          "url": "https://www.secteurvert.com/distributeurs/distribution/presentations/item/3504-gnis-teillage-st-martin-et-terre-de-lin-distributeurs-de-semences-certifiees-de-lin-high-tech-recompenses-en-juillet-2019-pour-leurs-actions-par-les-trophees-de-la-performance-et-du-dynamisme.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "fsov@gnis.frwww.fsov.orgMars",
+            "fsov@gnis.frwww.fsov.orgFonds",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "ellen.goudemand@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "valerie.laurent@florimond-desprez.fr",
+            "delphine.taillieu@florimond-desprez.fr",
+            "mickael.throude@biogemma.com",
+            "jp.cohan@arvalis.fr",
+            "j.lorgeou@arvalis.fr",
+            "lduchalais@ragt.fr",
+            "stephane.lafarge@Biogemma.com",
+            "bruno.poupard@limagrain.com72\u00c9tablissement",
+            "marc-henri.lebrun@inra.fr",
+            "pascal.giraudeau@secobra.com",
+            "fsov@gnis.frwww.fsov.orgFrrrrranaaaa\u00e7ois",
+            "fsov@gnis.frwww.fsov.orgMars"
+          ],
+          "lang": "fr",
+          "polarite": 0.4681017532168742,
+          "score": 10000000000.0,
+          "subjectivite": 0.04288514171332036,
+          "title": "",
+          "url": "https://www.fsov.org/uploads/2019/8/FSOV-2019-Actes-Colloques.pdf"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "disontenconcurrenceavecdesrmesmulti-produits.4.Celasetraduitparlefaitquelessignesdesderiveespartielles@fA",
+            "pAet@fB",
+            "pBsontnegatifsetlessignesdesderiveespartielles@fA",
+            "pBet@fB",
+            "2\u02c7F@2",
+            "wehave@\u02c7M",
+            "\u02c7M2C@y0A",
+            "\u02c7M2C@y0B",
+            "\u02c7M2I@y0A",
+            "\u02c7M2I@y0B",
+            "M1A@A",
+            "1and@M1A"
+          ],
+          "lang": "fr",
+          "polarite": 0.0,
+          "score": 10000000000.0,
+          "subjectivite": 0.0,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02071220v2/document"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "8@A9"
+          ],
+          "lang": "en",
+          "polarite": 0.6875,
+          "score": 10000000000.0,
+          "subjectivite": -0.65625,
+          "title": "",
+          "url": "https://tel.archives-ouvertes.fr/tel-02183129/document"
+        },
+        null,
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "monemail@domaine.fr"
+          ],
+          "lang": "fr",
+          "polarite": 0.2964285714285715,
+          "score": 10000000000.0,
+          "subjectivite": -0.06507936507936508,
+          "title": "Le Gnis s'ouvre \u00e0 la concurrence - Produits agricoles",
+          "url": "https://www.usinenouvelle.com/article/le-gnis-s-ouvre-a-la-concurrence.N834365"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@geves.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "MOOC semences avec le GNIS : les inscriptions sont ouvertes ! - GEVES",
+          "url": "https://www.geves.fr/actualites/mooc-semences-avec-le-gnis-les-inscriptions-sont-ouvertes/"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "elodie.saumureau@gnis.fr",
+            "asfis@gnis.fr"
+          ],
+          "lang": "",
+          "polarite": 0,
+          "score": 10000000000.0,
+          "subjectivite": 0,
+          "title": "Pr\u00e9paration au certificat Bases pour l\u2019analyste de semences | Management, communication & vente",
+          "url": "https://asfis.org/preparation-au-certificat-bases-pour-l-analyste-de-semences"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.6326530612244898,
+          "score": 10000000000.0,
+          "subjectivite": 0.03061224489795917,
+          "title": "Concours Prairies - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/concours-prairies-palmares-gagnant.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.3916666666666666,
+          "score": 10000000000.0,
+          "subjectivite": 0.19999999999999998,
+          "title": "Revue de presse du secteur semences - GNIS P\u00e9dagogie",
+          "url": "https://www.gnis-pedagogie.org/gnis-pedagogie-actualites.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "contact@plantesfourrageres.org",
+            "contact@plantesfourrageres.org",
+            "delegue_protection_donnees@gnis.fr",
+            "contact@plantesfourrageres.org"
+          ],
+          "lang": "fr",
+          "polarite": 0.5351851851851852,
+          "score": 10000000000.0,
+          "subjectivite": -0.0018518518518518576,
+          "title": "Les plantes fourrag\u00e8res : mentions l\u00e9gales",
+          "url": "http://www.prairies-gnis.org/pages/mentions.htm"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "delegue_protection_donnees@gnis.fr",
+            "sempro@sempro.net",
+            "sempro@sempro.net"
+          ],
+          "lang": "fr",
+          "polarite": 0.5725198412698412,
+          "score": 10000000000.0,
+          "subjectivite": 0.031051587301587302,
+          "title": "Informations l\u00e9gales - Semences & Progr\u00e8s : la revue de la distribution pour les semences et l'agrofourniture",
+          "url": "https://www.semences-et-progres.fr/informations-legales_16.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "fr",
+          "polarite": 0.5466666666666666,
+          "score": 10000000000.0,
+          "subjectivite": 0.17333333333333334,
+          "title": "Interprofession : Le Gnis r\u00e9fl\u00e9chit \u00e0 s\u2019ouvrir aux d\u00e9fenseurs des semences de ferme",
+          "url": "http://www.lafranceagricole.fr/actualites/cultures/interprofession-le-gnis-reflechit-asouvrir-aux-defenseurs-des-semences-de-ferme-1,5,4248325219.html"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [],
+          "lang": "en",
+          "polarite": 0.2811722050930687,
+          "score": 10000000000.0,
+          "subjectivite": 0.07108170606372032,
+          "title": "Semences. Le GNIS veut \u00e9largir l'offre vari\u00e9tale",
+          "url": "https://www.slideshare.net/GuyonJacky/semences-le-gnis-veut-largir-loffre-varitale"
+        },
+        {
+          "audience": 10000000000.0,
+          "emails": [
+            "magnific-popup@1.1.0",
+            "simple-line-icons@2.4.1"
+          ],
+          "lang": "fr",
+          "polarite": 0.6804232804232803,
+          "score": 10000000000.0,
+          "subjectivite": 0.14606481481481481,
+          "title": "GNIS : Tribune Libre accord\u00e9e Catherine DAGORN, Directrice G\u00e9n\u00e9rale du Groupement National Interprofessionnel des Semences et plants, apr\u00e8s la diffusion de l\u2019\u00e9mission Cash Investigation du 18 juin 2019",
+          "url": "https://www.secteurvert.com/component/k2/item/3495-gnis-tribune-libre-accordee-catherine-dagorn-directrice-generale-du-groupement-national-interprofessionnel-des-semences-et-plants-apres-la-diffusion-de-l-emission-cash-investigation-du-18-juin-2019.html"
+        }
+      ],
+      "name": "Gouvernance",
+      "polarite": 0.32798907686532347,
+      "query": "\"GNIS\" AND (\"gouvernance\" OR ~gouvernance OR \"governance\" OR \"transparence\" OR ~transparence OR \"transparency\" OR \"alerte\" OR \"alert\" OR \"prise de d\u00e9cision\" OR \"decision making\" OR \"management\" OR \"d\u00e9cisionnel\" OR \"decision-making procedure\" OR \"agilit\u00e9\" OR \"agiltity\" OR \"agile\" OR \"amende\" OR \"fine\" OR \"penalty\")",
+      "score": 10000000000.0,
+      "subjectivite": 0.033622801991032535
     }
   ],
-  "projection": {
-    "2006": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 11,
-      "7": 6,
-      "8": 0
-    },
-    "article": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 4,
-      "7": 0,
-      "8": 0
-    },
-    "aspects": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 1,
-      "7": 0,
-      "8": 0
-    },
-    "code": {
-      "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 1,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "communication": {
-      "0": 0,
-      "1": 3,
-      "2": 0,
-      "3": 2,
-      "4": 1,
-      "5": 1,
-      "6": 1,
-      "7": 0,
-      "8": 0
-    },
-    "droit": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "durable": {
-      "0": 10,
-      "1": 1,
-      "2": 1,
-      "3": 8,
-      "4": 3,
-      "5": 3,
-      "6": 9,
-      "7": 0,
-      "8": 0
-    },
-    "d\u00e9veloppement": {
-      "0": 14,
-      "1": 0,
-      "2": 0,
-      "3": 9,
-      "4": 2,
-      "5": 0,
-      "6": 32,
-      "7": 0,
-      "8": 0
-    },
-    "entreprise": {
-      "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 5,
-      "4": 0,
-      "5": 0,
-      "6": 3,
-      "7": 0,
-      "8": 0
-    },
-    "entreprises": {
-      "0": 5,
-      "1": 0,
-      "2": 0,
-      "3": 1,
-      "4": 0,
-      "5": 4,
-      "6": 1,
-      "7": 0,
-      "8": 0
-    },
-    "iso": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 2,
-      "7": 0,
-      "8": 0
-    },
-    "l'entreprise": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "leurs": {
-      "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 2,
-      "4": 0,
-      "5": 2,
-      "6": 16,
-      "7": 0,
-      "8": 0
-    },
-    "loi": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 1,
-      "7": 0,
-      "8": 0
-    },
-    "mise": {
-      "0": 4,
-      "1": 0,
-      "2": 0,
-      "3": 2,
-      "4": 1,
-      "5": 0,
-      "6": 17,
-      "7": 0,
-      "8": 0
-    },
-    "modifier": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "name": {
-      "0": "Appel \u00e0 projets \u2013 RAIN",
-      "1": "Program 2019 \u2013 LFDay",
-      "2": "Prix Imagin'ma\u00efs' 2018-2019 | Ma\u00efs Culture Durable",
-      "3": "Ils nous accompagnent",
-      "4": "Vegetable crops | SIVAL Innovation",
-      "5": "GNIS : Teillage St Martin et Terre de Lin, distributeurs de Semences Certifi\u00e9es de Lin High Tech, r\u00e9compens\u00e9s en juillet 2019 pour leurs actions par les Troph\u00e9es de la Performance et du Dynamisme",
-      "6": "",
-      "7": "",
-      "8": ""
-    },
-    "normes": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "obligation": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "parties": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "prenantes": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "query": {
-      "0": "Innovation",
-      "1": "Innovation",
-      "2": "Innovation",
-      "3": "Innovation",
-      "4": "Innovation",
-      "5": "Innovation",
-      "6": "Innovation",
-      "7": "Innovation",
-      "8": "Innovation"
-    },
-    "rapport": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 27,
-      "7": 0,
-      "8": 0
-    },
-    "responsabilit\u00e9": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "rse": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "salari\u00e9s": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 1,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "social": {
-      "0": 0,
-      "1": 2,
-      "2": 0,
-      "3": 1,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "sociale": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 1,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "soci\u00e9tale": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
-    },
-    "soci\u00e9t\u00e9s": {
-      "0": 1,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 1,
-      "7": 0,
-      "8": 0
-    },
-    "url": {
-      "0": "https://rain-innovation.fr/appel-a-projets/",
-      "1": "https://lfday.fr/en/program-2019/",
-      "2": "https://www.maisculturedurable.com/prix-imaginmais-2018-2019/",
-      "3": "https://concours-agriculteurs-davenir.fr/partenaires/",
-      "4": "https://www.sival-innovation.com/en/category/vegetable-crops/",
-      "5": "https://www.secteurvert.com/distributeurs/distribution/presentations/item/3504-gnis-teillage-st-martin-et-terre-de-lin-distributeurs-de-semences-certifiees-de-lin-high-tech-recompenses-en-juillet-2019-pour-leurs-actions-par-les-trophees-de-la-performance-et-du-dynamisme.html",
-      "6": "https://www.fsov.org/uploads/2019/8/FSOV-2019-Actes-Colloques.pdf",
-      "7": "https://tel.archives-ouvertes.fr/tel-02071220v2/document",
-      "8": "https://tel.archives-ouvertes.fr/tel-02183129/document"
-    },
-    "voir": {
-      "0": 0,
-      "1": 0,
-      "2": 1,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 10,
-      "7": 0,
-      "8": 0
-    },
-    "\u0153uvre": {
-      "0": 3,
-      "1": 0,
-      "2": 0,
-      "3": 2,
-      "4": 0,
-      "5": 1,
-      "6": 2,
-      "7": 0,
-      "8": 0
-    }
-  }
+  "projection": {}
 }

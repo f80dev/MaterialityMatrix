@@ -78,6 +78,7 @@ class Document:
             "score": self.score,
             "lang":self.lang,
             "audience": self.audience,
+            "emails":self.emails,
             "polarite": self.polarite,
             "subjectivite": self.subjectivite
         })
