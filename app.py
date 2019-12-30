@@ -25,7 +25,7 @@ def searchforbrand(brand:str,referentiel:str):
     if "format" in request.args:format=request.args["format"]
 
 
-    size=10
+    size=30
     if "size" in request.args: size= int(request.args["size"])
 
     if not referentiel.startswith("http"):
@@ -52,6 +52,7 @@ def searchforbrand(brand:str,referentiel:str):
     for i in range(len(data)):
         row=data.iloc[i] #Contient chaque ligne du fichier d'input
 
+        words=None
         if "Projection" in row and isinstance(row["Projection"],str) and len(row["Projection"])>0:
             words = get_words(urlToString(urlToHTML(row["Projection"])), 30)
             dt = pd.DataFrame(columns=["name", "url"] + words)
@@ -70,8 +71,9 @@ def searchforbrand(brand:str,referentiel:str):
                 q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
                 q.init_metrics(size)
                 result["analyses"].append(q.to_dict())
-                rows = pd.DataFrame(q.project(words=words), columns=["query", "name", "url"] + words)
-                dt = dt.append(rows)
+                if not words is None:
+                    rows = pd.DataFrame(q.project(words=words), columns=["query", "name", "url"] + words)
+                    dt = dt.append(rows)
             except:
                 print("Erreur de traitement pour "+q.name)
                 pass

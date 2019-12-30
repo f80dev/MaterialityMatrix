@@ -1,7 +1,10 @@
 import pandas as pd
 from flask import send_file
 import os
-import googlesearch
+#import googlesearch
+from google import google
+#from pyGoogleSearch import *
+
 from app import log
 from document import Document
 from tools import extract_domain, hash_str
@@ -27,9 +30,12 @@ class Query:
             self.exclude=exclude.lower().replace("$brand", brand.lower())
 
         self.google_query = "\"" + brand + "\" AND (" + search + ")"
+        print("Déclenchement de la requète " + self.google_query)
         if not self.load_result(path):
-            self.result = googlesearch.search(self.google_query, tbs="qdr:y", start=0, stop=size, user_agent="MyUserAgent2", pause=30)
-
+            #rc=Google(self.google_query, pages=int(size/10)).search()
+            rc=google.search(query=self.google_query,pages=int(size/10))
+            #rc= googlesearch.search(self.google_query, tbs="qdr:y", start=0, stop=size, user_agent="MyUserAgent3", pause=20)
+            self.result=list(rc)
 
     def load_result(self,path=""):
         """
@@ -58,8 +64,10 @@ class Query:
             pass
         f=open(filename,mode="w")
         for r in self.result:
-            log(r +" saved")
-            f.write(r+"\n")
+            if type(r)!=str:
+                if not r.link is None:
+                    log(r.name + " saved")
+                    f.write(r.link+"\n")
         f.close()
 
 
