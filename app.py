@@ -14,7 +14,7 @@ def help():
     return 'Welcome on MaterialityMatrix'
 
 #http://192.168.1.4:7080/search/GNIS/rse.xlsx
-#http://localhost:6080/search/GNIS/rse.xlsx
+#http://localhost:6080/search/stuart.com/rse2.xlsx
 #http://server.f80.fr:6080/search/GNIS/rse.xlsx
 #https://json.f80.fr/?file=https:%2F%2Fserver.f80.fr:6080%2Fsearch%2FGNIS%2Frse.xlsx
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])
@@ -49,6 +49,8 @@ def searchforbrand(brand:str,referentiel:str):
     result = dict()
     result["analyses"]=list()
 
+    url_to_exclude=list()
+
     for i in range(len(data)):
         row=data.iloc[i] #Contient chaque ligne du fichier d'input
 
@@ -65,7 +67,10 @@ def searchforbrand(brand:str,referentiel:str):
                 brand=brand,
                 exclude=row["exclude"],
                 size=size,
-                path="./temp")
+                path="./temp",
+                url_to_exclude=url_to_exclude
+            )
+
             q.save_result("./temp")
             try:
                 q.execute(domain_to_exclude=domain_to_exclude,densite=row["densite"])
@@ -78,13 +83,14 @@ def searchforbrand(brand:str,referentiel:str):
                 print("Erreur de traitement pour "+q.name)
                 pass
 
+            for url in q.result:
+                url_to_exclude.append(url)
+
     #if "xls" in format: return q.to_excel()
     # if "csv" in format:return q.to_csv()
     # if "redirect" in format:
     #     url=urllib.parse.quote_plus(request.url.replace("format=redirect","format=json"))
     #     return redirect("https://jsoneditoronline.org/?url="+url)
-
-
     result["projection"]=dt.to_dict()
 
     # writer = pd.ExcelWriter("./saved/analyse.xlsx", engine="xlsxwriter")

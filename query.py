@@ -22,7 +22,8 @@ class Query:
     subjectivite = 0
 
 
-    def __init__(self,name:str,search:str,brand:str,exclude:str="",size:int=20,path:str=None):
+    def __init__(self,name:str,search:str,brand:str,exclude:str="",size:int=20,path:str=None,url_to_exclude:list=[]):
+        self.urls_to_exclude = url_to_exclude
         self.name=name
         self.search=search
         self.brand=brand
@@ -32,9 +33,7 @@ class Query:
         self.google_query = "\"" + brand + "\" AND (" + search + ")"
         print("Déclenchement de la requète " + self.google_query)
         if not self.load_result(path):
-            #rc=Google(self.google_query, pages=int(size/10)).search()
             rc=google.search(query=self.google_query,pages=int(size/10))
-            #rc= googlesearch.search(self.google_query, tbs="qdr:y", start=0, stop=size, user_agent="MyUserAgent3", pause=20)
             self.result=list(rc)
 
     def load_result(self,path=""):
@@ -86,13 +85,14 @@ class Query:
 
                 exclude_domain: str = self.exclude.split(" ") + domain_to_exclude
 
-                if not domain in exclude_domain:
+                if not domain in exclude_domain and r not in self.urls_to_exclude:
                     d = Document(r)
                     d.analyse(densite=densite)
                     d.extract_email()
-                    self.documents.append(d)
+                    if not d is None:
+                        self.documents.append(d)
                 else:
-                    log("=> rejected because of forbidden domain")
+                    log("=> rejected because of forbidden domain or already treat")
 
 
     def init_metrics(self,size):
