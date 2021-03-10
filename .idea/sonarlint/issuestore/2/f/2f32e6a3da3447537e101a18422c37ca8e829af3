@@ -1,0 +1,5 @@
+
+npython:S1542("VRename function "maxCaracteres" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(±åÏ
+cpython:S1542D"KRename function "tf" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ßñà¢
+jpython:S1542f"RRename function "urlToHTML" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ºôÌ‡
+rpython:S1542„"TRename function "urlToString" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ä©Úºøÿÿÿÿ

@@ -1,9 +1,7 @@
 import pandas as pd
 from flask import send_file
 import os
-#import googlesearch
-from google import google
-#from pyGoogleSearch import *
+from googlesearch.googlesearch import GoogleSearch
 
 from app import log
 from document import Document
@@ -33,7 +31,7 @@ class Query:
         self.google_query = "\"" + brand + "\" AND (" + search + ")"
         print("Déclenchement de la requète " + self.google_query)
         if not self.load_result(path):
-            rc=google.search(query=self.google_query,pages=int(size/10))
+            rc=GoogleSearch().search(query=self.google_query,num_results=size)
             self.result=list(rc)
 
     def load_result(self,path=""):

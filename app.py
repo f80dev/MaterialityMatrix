@@ -14,7 +14,7 @@ def help():
     return 'Welcome on MaterialityMatrix'
 
 #http://192.168.1.4:7080/search/GNIS/rse.xlsx
-#http://localhost:6080/search/stuart.com/rse2.xlsx
+#http://localhost:6080/search/stuart/rse.xlsx
 #http://server.f80.fr:6080/search/GNIS/rse.xlsx
 #https://json.f80.fr/?file=https:%2F%2Fserver.f80.fr:6080%2Fsearch%2FGNIS%2Frse.xlsx
 @app.route('/search/<string:brand>/<string:referentiel>', methods=['GET'])

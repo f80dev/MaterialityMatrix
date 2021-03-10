@@ -1,0 +1,4 @@
+
+opython:S100c"SRename method "loadDocument" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(¡ƒ·—øÿÿÿÿ
+Gpython:S1481@"*Remove the unused local variable "result".(Ú—Éıÿÿÿÿ
+opython:S100\"SRename method "saveDocument" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(£©°Ûÿÿÿÿÿ

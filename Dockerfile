@@ -9,10 +9,10 @@
 
 
 #arm
-FROM f80hub/scientist_python_server_arm
+#FROM f80hub/scientist_python_server_arm
 
 #x86
-#FROM python:3.7.4-alpine
+FROM python:3.7.4-alpine
 
 
 #arm

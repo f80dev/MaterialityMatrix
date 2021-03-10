@@ -1,0 +1,7 @@
+
+7python:S125†"Remove this commented out code.(Ú³õ
+npython:S107"KMethod "__init__" has 8 parameters, which is greater than the 7 authorized.(Õò®³ıÿÿÿÿ8¯Ş©Ùõ-
+Spython:S1066C"/Merge this if statement with the enclosing one.(È¥¢¦ùÿÿÿÿ8ãˆÏÃñ-
+Bpython:S125"Remove this commented out code.(ÂÒ®œÿÿÿÿÿ8Ú¨Ãñ-
+Cpython:S1481"%Remove the unused local variable "i".(£ıú¼şÿÿÿÿ
+Bpython:S125"Remove this commented out code.(ï³Â÷øÿÿÿÿ8Ú¨Ãñ-
